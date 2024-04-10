@@ -1,1 +1,13 @@
 to_delete
+*.json
+*.json.gsv
+*.json.gz
+.DS_Store
+.idea
+*.tfstate
+*.tfstate.*
+**.terraform
+**.terraform.lock.*
+**google_credentials.json
+**logs/
+**.env
