@@ -1,0 +1,306 @@
+,school,ncaa_team_url,school_website_url
+0,St. Thomas (MN),https://stats.ncaa.org/teams/573909,http://www.Tommiesports.com
+1,Tarleton St.,https://stats.ncaa.org/teams/573910,http://tarletonsports.com
+2,Utah Tech,https://stats.ncaa.org/teams/573911,http://www.utahtechtrailblazers.com
+3,Akron,https://stats.ncaa.org/teams/573912,http://gozips.com
+4,Texas A&M,https://stats.ncaa.org/teams/573913,http://www.12thman.com
+5,TCU,https://stats.ncaa.org/teams/573914,http://www.gofrogs.com
+6,Texas Southern,https://stats.ncaa.org/teams/573915,http://www.tsusports.com
+7,Texas Tech,https://stats.ncaa.org/teams/573916,http://www.texastech.com
+8,UT Arlington,https://stats.ncaa.org/teams/573917,http://www.utamavs.com
+9,Texas,https://stats.ncaa.org/teams/573918,http://www.TexasSports.com
+10,UTSA,https://stats.ncaa.org/teams/573919,http://www.goutsa.com
+11,Toledo,https://stats.ncaa.org/teams/573920,http://www.utrockets.com
+12,Towson,https://stats.ncaa.org/teams/573921,http://www.towsontigers.com
+13,Troy,https://stats.ncaa.org/teams/573922,http://troytrojans.com
+14,Tulane,https://stats.ncaa.org/teams/573923,http://www.tulanegreenwave.com
+15,Air Force,https://stats.ncaa.org/teams/573924,http://www.goairforcefalcons.com/
+16,Army West Point,https://stats.ncaa.org/teams/573925,https://goarmywestpoint.com/
+17,Navy,https://stats.ncaa.org/teams/573946,http://www.navysports.com
+18,Utah,https://stats.ncaa.org/teams/573947,http://utahutes.com/
+19,Valparaiso,https://stats.ncaa.org/teams/573948,http://www.valpoathletics.com
+20,Vanderbilt,https://stats.ncaa.org/teams/573949,http://vucommodores.com
+21,Villanova,https://stats.ncaa.org/teams/573950,http://www.villanova.com
+22,VCU,https://stats.ncaa.org/teams/573951,http://www.vcuathletics.com
+23,VMI,https://stats.ncaa.org/teams/573952,http://www.vmikeydets.com
+24,Virginia Tech,https://stats.ncaa.org/teams/573953,http://www.hokiesports.com
+25,Virginia,https://stats.ncaa.org/teams/573954,http://www.virginiasports.com
+26,Wagner,https://stats.ncaa.org/teams/573955,http://www.wagnerathletics.com
+27,Wake Forest,https://stats.ncaa.org/teams/573956,http://www.godeacs.com
+28,Washington St.,https://stats.ncaa.org/teams/573957,http://www.wsucougars.com
+29,Washington,https://stats.ncaa.org/teams/573958,http://www.gohuskies.com
+30,West Virginia,https://stats.ncaa.org/teams/573959,http://www.wvusports.com
+31,Western Caro.,https://stats.ncaa.org/teams/573960,http://www.catamountsports.com
+32,Western Ill.,https://stats.ncaa.org/teams/573961,http://www.goleathernecks.com
+33,Western Ky.,https://stats.ncaa.org/teams/573962,http://www.wkusports.com
+34,Western Mich.,https://stats.ncaa.org/teams/573963,http://www.wmubroncos.com
+35,Wichita St.,https://stats.ncaa.org/teams/573964,http://www.goshockers.com
+36,William & Mary,https://stats.ncaa.org/teams/573965,http://www.tribeathletics.com
+37,Winthrop,https://stats.ncaa.org/teams/573966,http://www.winthropeagles.com
+38,Milwaukee,https://stats.ncaa.org/teams/573967,http://www.mkepanthers.com
+39,Wright St.,https://stats.ncaa.org/teams/573968,http://www.wsuraiders.com
+40,Xavier,https://stats.ncaa.org/teams/573969,http://www.goxavier.com
+41,Yale,https://stats.ncaa.org/teams/573970,http://www.yalebulldogs.com
+42,Youngstown St.,https://stats.ncaa.org/teams/573971,http://www.ysusports.com
+43,Central Ark.,https://stats.ncaa.org/teams/573972,http://www.ucasports.com
+44,Merrimack,https://stats.ncaa.org/teams/573973,http://www.merrimackathletics.com
+45,Col. of Charleston,https://stats.ncaa.org/teams/573974,http://www.cofcsports.com
+46,DBU,https://stats.ncaa.org/teams/573975,http://www.dbupatriots.com
+47,Elon,https://stats.ncaa.org/teams/573976,http://www.elonphoenix.com
+48,Gardner-Webb,https://stats.ncaa.org/teams/573977,http://gwusports.com/
+49,Grand Canyon,https://stats.ncaa.org/teams/573978,http://www.gculopes.com
+50,Kennesaw St.,https://stats.ncaa.org/teams/573979,http://www.ksuowls.com
+51,Presbyterian,https://stats.ncaa.org/teams/573980,http://gobluehose.com
+52,Seattle U,https://stats.ncaa.org/teams/573981,http://goseattleu.com
+53,Ark.-Pine Bluff,https://stats.ncaa.org/teams/573982,http://uapblionsroar.com/
+54,North Florida,https://stats.ncaa.org/teams/573983,http://www.unfospreys.com
+55,UIW,https://stats.ncaa.org/teams/573984,http://uiwcardinals.com
+56,Wofford,https://stats.ncaa.org/teams/573985,https://woffordterriers.com/
+57,USC Upstate,https://stats.ncaa.org/teams/573986,http://www.upstatespartans.com
+58,Belmont,https://stats.ncaa.org/teams/573987,http://www.belmontbruins.com
+59,High Point,https://stats.ncaa.org/teams/573988,http://www.highpointpanthers.com
+60,A&M-Corpus Christi,https://stats.ncaa.org/teams/573989,http://www.goislanders.com
+61,Lipscomb,https://stats.ncaa.org/teams/573990,http://www.lipscombsports.com
+62,FGCU,https://stats.ncaa.org/teams/573991,http://fgcuathletics.com/
+63,Utah Valley,https://stats.ncaa.org/teams/573992,http://www.gouvu.com
+64,North Ala.,https://stats.ncaa.org/teams/573993,http://www.roarlions.com
+65,California Baptist,https://stats.ncaa.org/teams/573994,http://www.cbulancers.com
+66,Abilene Christian,https://stats.ncaa.org/teams/573995,http://www.acusports.com
+67,Alabama A&M,https://stats.ncaa.org/teams/573996,http://www.aamusports.com
+68,Alabama St.,https://stats.ncaa.org/teams/573997,http://www.bamastatesports.com
+69,Alabama,https://stats.ncaa.org/teams/573998,http://www.rolltide.com
+70,UAB,https://stats.ncaa.org/teams/573999,http://www.uabsports.com
+71,UAlbany,https://stats.ncaa.org/teams/574000,http://www.ualbanysports.com
+72,Alcorn,https://stats.ncaa.org/teams/574001,http://www.alcornsports.com
+73,App State,https://stats.ncaa.org/teams/574002,http://appstatesports.com
+74,Arizona St.,https://stats.ncaa.org/teams/574003,http://thesundevils.com
+75,Arizona,https://stats.ncaa.org/teams/574004,http://www.arizonawildcats.com
+76,Arkansas St.,https://stats.ncaa.org/teams/574005,http://www.astateredwolves.com
+77,Arkansas,https://stats.ncaa.org/teams/574006,http://arkansasrazorbacks.com/
+78,Little Rock,https://stats.ncaa.org/teams/574007,http://lrtrojans.com
+79,Auburn,https://stats.ncaa.org/teams/574008,http://www.auburntigers.com
+80,Austin Peay,https://stats.ncaa.org/teams/574009,http://www.letsgopeay.com
+81,Ball St.,https://stats.ncaa.org/teams/574010,http://www.ballstatesports.com
+82,Charleston So.,https://stats.ncaa.org/teams/574011,http://csusports.com/
+83,Baylor,https://stats.ncaa.org/teams/574012,http://www.baylorbears.com
+84,Bethune-Cookman,https://stats.ncaa.org/teams/574013,http://www.bcuathetics.com
+85,Binghamton,https://stats.ncaa.org/teams/574014,http://www.bubearcats.com
+86,Boston College,https://stats.ncaa.org/teams/574015,http://www.bceagles.com
+87,Bowling Green,https://stats.ncaa.org/teams/574016,http://www.bgsufalcons.com
+88,Bradley,https://stats.ncaa.org/teams/574017,http://www.bradleybraves.com
+89,BYU,https://stats.ncaa.org/teams/574018,http://byucougars.com
+90,Brown,https://stats.ncaa.org/teams/574019,http://www.brownbears.com
+91,Bryant,https://stats.ncaa.org/teams/574020,http://www.bryantbulldogs.com
+92,Bucknell,https://stats.ncaa.org/teams/574021,http://bucknellbison.com
+93,Butler,https://stats.ncaa.org/teams/574022,http://www.butlersports.com
+94,Cal Poly,https://stats.ncaa.org/teams/574023,http://gopoly.com
+95,CSU Bakersfield,https://stats.ncaa.org/teams/574024,http://www.gorunners.com
+96,Fresno St.,https://stats.ncaa.org/teams/574025,http://www.gobulldogs.com
+97,Cal St. Fullerton,https://stats.ncaa.org/teams/574026,http://www.fullertontitans.com
+98,Long Beach St.,https://stats.ncaa.org/teams/574027,http://longbeachstate.com
+99,CSUN,https://stats.ncaa.org/teams/574028,http://www.GoMatadors.com
+100,Sacramento St.,https://stats.ncaa.org/teams/574029,http://www.hornetsports.com
+101,UC Santa Barbara,https://stats.ncaa.org/teams/574030,http://ucsbgauchos.com
+102,California,https://stats.ncaa.org/teams/574031,http://www.calbears.com
+103,UC Davis,https://stats.ncaa.org/teams/574032,http://www.ucdavisaggies.com
+104,UC Irvine,https://stats.ncaa.org/teams/574033,https://ucirvinesports.com/
+105,UCLA,https://stats.ncaa.org/teams/574034,http://www.uclabruins.com
+106,UC Riverside,https://stats.ncaa.org/teams/574035,http://www.gohighlanders.com/
+107,Campbell,https://stats.ncaa.org/teams/574036,http://www.gocamels.com
+108,Canisius,https://stats.ncaa.org/teams/574037,http://www.gogriffs.com
+109,Central Conn. St.,https://stats.ncaa.org/teams/574038,http://www.ccsubluedevils.com
+110,UCF,https://stats.ncaa.org/teams/574039,http://www.ucfknights.com/
+111,Central Mich.,https://stats.ncaa.org/teams/574040,http://www.cmuchippewas.com
+112,Cincinnati,https://stats.ncaa.org/teams/574041,http://gobearcats.com
+113,The Citadel,https://stats.ncaa.org/teams/574042,http://www.citadelsports.com
+114,Clemson,https://stats.ncaa.org/teams/574043,http://clemsontigers.com
+115,Coastal Carolina,https://stats.ncaa.org/teams/574044,http://www.goccusports.com
+116,Columbia,https://stats.ncaa.org/teams/574045,http://www.gocolumbialions.com/
+117,UConn,https://stats.ncaa.org/teams/574046,http://www.uconnhuskies.com
+118,Coppin St.,https://stats.ncaa.org/teams/574047,http://www.coppinstatesports.com
+119,Cornell,https://stats.ncaa.org/teams/574048,http://www.cornellbigred.com
+120,Creighton,https://stats.ncaa.org/teams/574049,http://gocreighton.com/
+121,Dartmouth,https://stats.ncaa.org/teams/574050,http://www.dartmouthsports.com
+122,Davidson,https://stats.ncaa.org/teams/574051,http://www.davidsonwildcats.com
+123,Dayton,https://stats.ncaa.org/teams/574052,http://www.daytonflyers.com
+124,Delaware St.,https://stats.ncaa.org/teams/574053,http://www.dsuhornets.com/
+125,Delaware,https://stats.ncaa.org/teams/574054,http://www.bluehens.com
+126,Duke,https://stats.ncaa.org/teams/574055,http://www.goduke.com
+127,East Carolina,https://stats.ncaa.org/teams/574056,http://www.ecupirates.com
+128,ETSU,https://stats.ncaa.org/teams/574057,http://www.etsubucs.com
+129,Eastern Ill.,https://stats.ncaa.org/teams/574058,http://www.eiupanthers.com
+130,Eastern Ky.,https://stats.ncaa.org/teams/574059,http://www.ekusports.com
+131,Eastern Mich.,https://stats.ncaa.org/teams/574060,http://www.emueagles.com
+132,Evansville,https://stats.ncaa.org/teams/574061,http://www.gopurpleaces.com
+133,Fairfield,https://stats.ncaa.org/teams/574062,http://fairfieldstags.com
+134,FDU,https://stats.ncaa.org/teams/574063,http://www.fduknights.com
+135,Florida A&M,https://stats.ncaa.org/teams/574064,http://www.famuathletics.com/
+136,Fla. Atlantic,https://stats.ncaa.org/teams/574065,http://www.fausports.com
+137,FIU,https://stats.ncaa.org/teams/574066,http://www.fiusports.com
+138,Florida St.,https://stats.ncaa.org/teams/574067,http://www.seminoles.com
+139,Florida,https://stats.ncaa.org/teams/574068,http://www.floridagators.com
+140,Fordham,https://stats.ncaa.org/teams/574069,http://www.fordhamsports.com
+141,George Mason,https://stats.ncaa.org/teams/574070,http://www.gomason.com
+142,George Washington,https://stats.ncaa.org/teams/574071,https://gwsports.com/
+143,Georgetown,https://stats.ncaa.org/teams/574072,http://guhoyas.com
+144,Ga. Southern,https://stats.ncaa.org/teams/574073,http://gseagles.com
+145,Georgia St.,https://stats.ncaa.org/teams/574074,http://georgiastatesports.com
+146,Georgia Tech,https://stats.ncaa.org/teams/574075,http://www.ramblinwreck.com
+147,Georgia,https://stats.ncaa.org/teams/574076,http://www.georgiadogs.com
+148,Gonzaga,https://stats.ncaa.org/teams/574077,http://www.gozags.com
+149,Grambling,https://stats.ncaa.org/teams/574078,http://www.gsutigers.com
+150,Harvard,https://stats.ncaa.org/teams/574080,http://gocrimson.com
+151,Hawaii,https://stats.ncaa.org/teams/574081,https://hawaiiathletics.com
+152,Hofstra,https://stats.ncaa.org/teams/574082,http://www.gohofstra.com
+153,Holy Cross,https://stats.ncaa.org/teams/574083,http://goholycross.com/
+154,Houston Christian,https://stats.ncaa.org/teams/574084,http://www.hbuhuskies.com
+155,Houston,https://stats.ncaa.org/teams/574085,http://www.uhcougars.com
+156,Illinois St.,https://stats.ncaa.org/teams/574086,http://GoRedbirds.com
+157,Illinois,https://stats.ncaa.org/teams/574087,http://www.fightingillini.com
+158,UIC,https://stats.ncaa.org/teams/574088,http://www.uicflames.com
+159,Indiana St.,https://stats.ncaa.org/teams/574089,http://www.gosycamores.com
+160,Indiana,https://stats.ncaa.org/teams/574090,http://www.iuhoosiers.com
+161,Purdue Fort Wayne,https://stats.ncaa.org/teams/574091,http://www.gomastodons.com/
+162,Iona,https://stats.ncaa.org/teams/574092,http://www.ionagaels.com
+163,Iowa,https://stats.ncaa.org/teams/574093,http://www.hawkeyesports.com
+164,Jackson St.,https://stats.ncaa.org/teams/574094,http://www.gojsutigers.com
+165,Jacksonville St.,https://stats.ncaa.org/teams/574095,http://www.jsugamecocksports.com
+166,Jacksonville,https://stats.ncaa.org/teams/574096,http://www.judolphins.com
+167,James Madison,https://stats.ncaa.org/teams/574097,http://www.jmusports.com
+168,Kansas St.,https://stats.ncaa.org/teams/574098,http://www.kstatesports.com
+169,Kansas,https://stats.ncaa.org/teams/574099,http://kuathletics.com
+170,Kent St.,https://stats.ncaa.org/teams/574100,http://www.kentstatesports.com
+171,Kentucky,https://stats.ncaa.org/teams/574101,http://www.ukathletics.com
+172,Lafayette,https://stats.ncaa.org/teams/574102,http://www.goleopards.com
+173,Lamar University,https://stats.ncaa.org/teams/574103,http://www.lamarcardinals.com
+174,Lehigh,https://stats.ncaa.org/teams/574104,http://www.lehighsports.com
+175,Liberty,https://stats.ncaa.org/teams/574105,http://www.LibertyFlames.com
+176,LIU,https://stats.ncaa.org/teams/574106,http://www.liuathletics.com
+177,Longwood,https://stats.ncaa.org/teams/574107,http://longwoodlancers.com
+178,LSU,https://stats.ncaa.org/teams/574108,http://www.lsusports.net
+179,Louisiana Tech,https://stats.ncaa.org/teams/574109,http://www.latechsports.com/
+180,Louisville,https://stats.ncaa.org/teams/574110,http://www.gocards.com
+181,UMass Lowell,https://stats.ncaa.org/teams/574111,http://www.goriverhawks.com
+182,LMU (CA),https://stats.ncaa.org/teams/574112,http://www.LMULions.com
+183,Maine,https://stats.ncaa.org/teams/574113,http://goblackbears.com
+184,Manhattan,https://stats.ncaa.org/teams/574114,http://www.gojaspers.com
+185,Marist,https://stats.ncaa.org/teams/574115,http://goredfoxes.com
+186,Marshall,https://stats.ncaa.org/teams/574116,http://www.herdzone.com
+187,UMBC,https://stats.ncaa.org/teams/574117,http://UMBCRetrievers.com
+188,Maryland,https://stats.ncaa.org/teams/574118,http://www.umterps.com
+189,UMES,https://stats.ncaa.org/teams/574119,https://easternshorehawks.com/
+190,Massachusetts,https://stats.ncaa.org/teams/574120,http://www.umassathletics.com
+191,McNeese,https://stats.ncaa.org/teams/574121,http://www.mcneesesports.com
+192,Memphis,https://stats.ncaa.org/teams/574122,http://www.gotigersgo.com
+193,Mercer,https://stats.ncaa.org/teams/574123,http://www.mercerbears.com
+194,Miami (OH),https://stats.ncaa.org/teams/574124,http://www.miamiredhawks.com
+195,Miami (FL),https://stats.ncaa.org/teams/574125,https://miamihurricanes.com/
+196,Michigan St.,https://stats.ncaa.org/teams/574126,http://msuspartans.com/
+197,Michigan,https://stats.ncaa.org/teams/574127,http://www.mgoblue.com
+198,Middle Tenn.,https://stats.ncaa.org/teams/574128,http://www.goblueraiders.com
+199,Minnesota,https://stats.ncaa.org/teams/574129,http://www.gophersports.com
+200,Mississippi St.,https://stats.ncaa.org/teams/574130,http://www.hailstate.com
+201,Mississippi Val.,https://stats.ncaa.org/teams/574131,http://www.mvsusports.com
+202,Ole Miss,https://stats.ncaa.org/teams/574132,http://www.olemisssports.com
+203,Missouri,https://stats.ncaa.org/teams/574133,http://www.mutigers.com
+204,Monmouth,https://stats.ncaa.org/teams/574134,http://www.monmouthhawks.com
+205,Morehead St.,https://stats.ncaa.org/teams/574135,http://www.msueagles.com
+206,Mount St. Mary's,https://stats.ncaa.org/teams/574136,http://www.mountathletics.com
+207,Murray St.,https://stats.ncaa.org/teams/574137,http://www.goracers.com
+208,UNC Asheville,https://stats.ncaa.org/teams/574138,http://www.uncabulldogs.com
+209,North Carolina,https://stats.ncaa.org/teams/574139,http://www.goheels.com
+210,Charlotte,https://stats.ncaa.org/teams/574140,http://www.charlotte49ers.com
+211,UNC Greensboro,https://stats.ncaa.org/teams/574141,http://www.uncgspartans.com
+212,UNCW,https://stats.ncaa.org/teams/574142,http://www.uncwsports.com
+213,Nebraska,https://stats.ncaa.org/teams/574143,http://www.huskers.com
+214,Omaha,https://stats.ncaa.org/teams/574144,http://www.omavs.com
+215,UNLV,https://stats.ncaa.org/teams/574145,http://unlvrebels.com
+216,Nevada,https://stats.ncaa.org/teams/574146,http://nevadawolfpack.com
+217,NJIT,https://stats.ncaa.org/teams/574147,http://www.njithighlanders.com
+218,New Mexico St.,https://stats.ncaa.org/teams/574148,http://www.nmstatesports.com
+219,New Mexico,https://stats.ncaa.org/teams/574149,http://www.golobos.com
+220,New Orleans,https://stats.ncaa.org/teams/574150,http://www.unoprivateers.com
+221,Niagara,https://stats.ncaa.org/teams/574151,http://www.purpleeagles.com
+222,Nicholls,https://stats.ncaa.org/teams/574152,http://www.geauxcolonels.com
+223,Norfolk St.,https://stats.ncaa.org/teams/574153,http://www.nsuspartans.com
+224,N.C. A&T,https://stats.ncaa.org/teams/574154,http://www.ncataggies.com
+225,NC State,https://stats.ncaa.org/teams/574155,http://www.gopack.com
+226,North Dakota St.,https://stats.ncaa.org/teams/574156,http://www.GoBison.com
+227,ULM,https://stats.ncaa.org/teams/574157,http://www.ulmwarhawks.com
+228,Northeastern,https://stats.ncaa.org/teams/574158,http://www.nuhuskies.com
+229,Northern Colo.,https://stats.ncaa.org/teams/574159,http://uncbears.com
+230,NIU,https://stats.ncaa.org/teams/574160,http://www.niuhuskies.com
+231,Northern Ky.,https://stats.ncaa.org/teams/574161,http://www.nkunorse.com
+232,Northwestern St.,https://stats.ncaa.org/teams/574162,http://www.nsudemons.com
+233,Northwestern,https://stats.ncaa.org/teams/574163,http://www.nusports.com
+234,Notre Dame,https://stats.ncaa.org/teams/574164,http://www.und.com
+235,Oakland,https://stats.ncaa.org/teams/574165,http://goldengrizzlies.com
+236,Ohio St.,https://stats.ncaa.org/teams/574166,http://ohiostatebuckeyes.com/
+237,Ohio,https://stats.ncaa.org/teams/574167,http://www.ohiobobcats.com
+238,Oklahoma St.,https://stats.ncaa.org/teams/574168,http://www.okstate.com
+239,Oklahoma,https://stats.ncaa.org/teams/574169,http://soonersports.com
+240,Old Dominion,https://stats.ncaa.org/teams/574170,http://www.odusports.com
+241,Oral Roberts,https://stats.ncaa.org/teams/574171,http://www.oruathletics.com
+242,Oregon St.,https://stats.ncaa.org/teams/574172,http://osubeavers.com/
+243,Oregon,https://stats.ncaa.org/teams/574173,http://www.goducks.com
+244,Pacific,https://stats.ncaa.org/teams/574174,http://www.pacifictigers.com
+245,UTRGV,https://stats.ncaa.org/teams/574175,http://goutrgv.com
+246,Penn St.,https://stats.ncaa.org/teams/574176,http://goPSUsports.com
+247,Penn,https://stats.ncaa.org/teams/574177,http://www.pennathletics.com
+248,Pepperdine,https://stats.ncaa.org/teams/574178,http://www.pepperdinewaves.com
+249,Pittsburgh,https://stats.ncaa.org/teams/574179,http://www.pittsburghpanthers.com
+250,Portland,https://stats.ncaa.org/teams/574180,http://www.portlandpilots.com
+251,Prairie View,https://stats.ncaa.org/teams/574181,http://www.pvpanthers.com
+252,Princeton,https://stats.ncaa.org/teams/574182,http://www.goprincetontigers.com
+253,Purdue,https://stats.ncaa.org/teams/574183,http://purduesports.com
+254,Quinnipiac,https://stats.ncaa.org/teams/574184,http://www.gobobcats.com
+255,Radford,https://stats.ncaa.org/teams/574185,http://www.radfordathletics.com
+256,Rhode Island,https://stats.ncaa.org/teams/574186,http://www.gorhody.com
+257,Rice,https://stats.ncaa.org/teams/574187,http://www.riceowls.com
+258,Richmond,https://stats.ncaa.org/teams/574188,http://www.richmondspiders.edu
+259,Rider,https://stats.ncaa.org/teams/574189,http://www.gobroncs.com
+260,Rutgers,https://stats.ncaa.org/teams/574190,http://www.scarletknights.com
+261,Sacred Heart,https://stats.ncaa.org/teams/574191,http://sacredheartpioneers.com
+262,St. Bonaventure,https://stats.ncaa.org/teams/574192,http://www.gobonnies.com
+263,St. John's (NY),https://stats.ncaa.org/teams/574193,http://www.redstormsports.com
+264,Saint Joseph's,https://stats.ncaa.org/teams/574194,http://sjuhawks.com
+265,Saint Louis,https://stats.ncaa.org/teams/574195,http://www.slubillikens.com
+266,Saint Mary's (CA),https://stats.ncaa.org/teams/574196,http://www.SMCGaels.com
+267,Saint Peter's,https://stats.ncaa.org/teams/574197,http://www.saintpeterspeacocks.com
+268,Sam Houston,https://stats.ncaa.org/teams/574198,http://www.gobearkats.com
+269,Samford,https://stats.ncaa.org/teams/574199,http://samfordsports.com
+270,San Diego St.,https://stats.ncaa.org/teams/574200,http://goaztecs.com
+271,San Diego,https://stats.ncaa.org/teams/574201,http://www.usdtoreros.com
+272,San Francisco,https://stats.ncaa.org/teams/574202,https://usfdons.com/index.aspx
+273,San Jose St.,https://stats.ncaa.org/teams/574203,http://www.sjsuspartans.com
+274,Santa Clara,https://stats.ncaa.org/teams/574204,http://santaclarabroncos.com
+275,Seton Hall,https://stats.ncaa.org/teams/574205,http://www.shupirates.com
+276,Siena,https://stats.ncaa.org/teams/574206,http://www.sienasaints.com
+277,South Alabama,https://stats.ncaa.org/teams/574207,http://www.usajaguars.com
+278,South Carolina,https://stats.ncaa.org/teams/574208,http://gamecocksonline.com
+279,South Dakota St.,https://stats.ncaa.org/teams/574209,http://www.gojacks.com
+280,South Fla.,https://stats.ncaa.org/teams/574210,http://www.gousfbulls.com/
+281,Southeast Mo. St.,https://stats.ncaa.org/teams/574211,http://www.GoSoutheast.com
+282,Southeastern La.,https://stats.ncaa.org/teams/574212,http://www.lionsports.net
+283,Southern California,https://stats.ncaa.org/teams/574213,http://usctrojans.com
+284,Southern Ill.,https://stats.ncaa.org/teams/574214,http://www.siusalukis.com/
+285,SIUE,https://stats.ncaa.org/teams/574215,http://www.siuecougars.com
+286,Southern Miss.,https://stats.ncaa.org/teams/574216,http://www.southernmiss.com
+287,Southern U.,https://stats.ncaa.org/teams/574217,http://www.gojagsports.com
+288,Missouri St.,https://stats.ncaa.org/teams/574218,http://www.missouristatebears.com
+289,Texas St.,https://stats.ncaa.org/teams/574219,http://txstatebobcats.com
+290,Louisiana,https://stats.ncaa.org/teams/574220,http://www.ragincajuns.com
+291,Stanford,https://stats.ncaa.org/teams/574221,http://gostanford.com/
+292,SFA,https://stats.ncaa.org/teams/574222,http://SFAjacks.com
+293,Stetson,https://stats.ncaa.org/teams/574223,http://www.gohatters.com
+294,Stony Brook,https://stats.ncaa.org/teams/574224,http://stonybrookathletics.com
+295,Tennessee Tech,https://stats.ncaa.org/teams/574225,http://www.TTUsports.com/
+296,Tennessee,https://stats.ncaa.org/teams/574226,http://www.utsports.com
+297,UT Martin,https://stats.ncaa.org/teams/574227,http://www.utmsports.com
+298,Bellarmine,https://stats.ncaa.org/teams/574228,http://athletics.bellarmine.edu
+299,UC San Diego,https://stats.ncaa.org/teams/574229,http://www.ucsdtritons.com
+300,Lindenwood,https://stats.ncaa.org/teams/574230,http://lindenwoodlions.com
+301,Queens (NC),https://stats.ncaa.org/teams/574231,http://www.queensathletics.com
+302,Southern Ind.,https://stats.ncaa.org/teams/574232,http://www.gousieagles.com/
+303,Stonehill,https://stats.ncaa.org/teams/574233,http://www.stonehillskyhawks.com
+304,Le Moyne,https://stats.ncaa.org/teams/574412,http://www.lemoynedolphins.com
