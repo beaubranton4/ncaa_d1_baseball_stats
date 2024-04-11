@@ -33,3 +33,23 @@ resource "google_bigquery_dataset" "prod" {
   location = var.region
   project = var.project_id
 }
+
+// Create a Google Compute Engine instance
+resource "google_compute_instance" "my_instance" {
+  name         = "my-instance"
+  machine_type = "n1-standard-1"
+  zone         = var.zone
+  project      = var.project_id
+
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-10"
+    }
+  }
+
+  metadata_startup_script = <<-EOF
+    #!/bin/bash
+    apt-get update
+    apt-get install -y mage docker.io
+  EOF
+}

@@ -54,6 +54,9 @@ Setup Instructions:
     - hit enter
 - Voila! Your Data Lake and Data Warehouse have been created.
 
+- Next we will need to start a docker image with Mage
+-Must install Docker on machine (or should i install Docker for them in VM)
+
 - Updating Variables in Mage and Getting it to Run Pipelines (Terraform)
     - Need to spin up Mage using standalone repo outside of magic-zoomcamp
     - Make sure service account JSON key is accessible. Can i keep in same location and point in io_config.yml or does it have to be moved in mage folder.
