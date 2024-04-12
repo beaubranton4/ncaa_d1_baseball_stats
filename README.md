@@ -5,12 +5,15 @@ An end to end data pipeline that scrapes, stores, transforms and visualizes stat
 
 Setup Instructions:
 
-- Download Terraform
+1.0 GOOGLE CLOUD SETUP (Consider using CLI if that makes it easier)
+
 - Setup a Google Cloud Account
+- Enable Billing
 - Create a New Project on GCP and Give it a Name and ID (You do not have to create or select an organization)
     - Suggested Name:
     - Suggested ID:
     - You can choose any ID and name that you want, but you will need to update certain variables with the ID and name that you chose for your Google Cloud Project. If you use the Suggested Name and Suggested ID, these variables will default to what was suggested.
+1.1 SERVICE ACCOUNT:
 - Create a Service Account and Generate a JSON Key to access and manage the project with Terraform
     - 
     - https://console.cloud.google.com/iam-admin/serviceaccounts
@@ -35,10 +38,15 @@ Setup Instructions:
         roles.
     - Create the Service Account
     - Click on the Service Account and Select "Keys". Hit the "Add Key" button, select "Create Key", select the "JSON" button and create. This will save the JSON Key to your computer. Move the JSON key to the rootpath of the downloaded repo and also to the mage folder?
-
+1.2 ENABLE APIS
     - Next, we are required to enable Specific Google APIs (click following links and hit enable):
-        - BigQuery API: https://console.developers.google.com/apis/api/bigquery.googleapis.com/overview?project=344681316515
-        - 
+        - BigQuery API: https://console.developers.google.com/apis/api/bigquery.googleapis.com
+        - Compute Engine API: https://console.cloud.google.com/marketplace/product/google/compute.googleapis.com
+1.3 GENERATE SSH KEYS
+
+2.0 DOWNLOAD REPOSITORY
+
+2.1 UPDATE .ENV or variables.tf
 - Update the variables.tf file:
     - The easiest way is to simply update the default values for each variable
     - You MUST update the following variables in variables.tf:
@@ -48,27 +56,29 @@ Setup Instructions:
     - I would recommend updating the following variables.tf file based on where you are located:
         - "region": https://cloud.google.com/about/locations/
     - The other variables can be set to whatever you choose, BUT I WOULD RECOMMEND KEEPING THE DEFAULT VALUES SO THAT THE MAGE AND DBT SCRIPTS DON'T REQUIRE UPDATING
+
+3.0 TERRAFORM SETUP 
+- Install Terraform
 - From terminal, navigate to the terraform directory:
     - run: terraform apply
     - type: yes
     - hit enter
-- Voila! Your Data Lake and Data Warehouse have been created.
+- Voila! Your Data Lake, VM and Data Warehouse have been created.
 
-- Next we will need to start a docker image with Mage
--Must install Docker on machine (or should i install Docker for them in VM)
 
-- Updating Variables in Mage and Getting it to Run Pipelines (Terraform)
-    - Need to spin up Mage using standalone repo outside of magic-zoomcamp
-    - Make sure service account JSON key is accessible. Can i keep in same location and point in io_config.yml or does it have to be moved in mage folder.
-    - Updating Variables to match terraform and Infrastructure
-        - Service account,
-        - bucket name
-        - Location
-        - project name
-        - dataset_name
-        - table_name
-    - Must include mage in terraform portion
-    - Or we can wrap mage and our pipelines in a docker container and have it trigger somehow automatically?
-    - Update  GOOGLE_SERVICE_ACC_KEY_FILEPATH: in io_config.yml
-- Setting Up DBT 
-- Build Dashboard
+4.0 VM SETUP
+4.1 INSTALLING ALL REQUIREMENTS FOR VM ENVIRONMENT
+    - Need to install Anaconda, POSTGRESQL, PGCLI, CHECK MAGE VIDEOS, CHECK DBT VIDEOS
+    - Must install Docker on machine (or should i install Docker for them in VM)
+4.2 RUNNING DOCKER IMAGE 
+    - docker-compose up
+4.3 TRIGGERING PIPELINE
+    - instructions
+        - Make sure service account JSON key is accessible. Can i keep in same location and point in io_config.yml or does it have to be moved in mage folder.
+        - Updating Variables to match terraform and Infrastructure
+        - Update  GOOGLE_SERVICE_ACC_KEY_FILEPATH: in io_config.yml
+        - Run and Schedule
+5.0 Setting Up DBT 
+6.0 Build Dashboard
+
+7.0 Destroying Resources

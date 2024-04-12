@@ -14,6 +14,13 @@ variable "region" {
   #Update the default value to your desired region
 }
 
+variable "zone" {
+  description = "Region of the Google Cloud Project"
+  default     = "us-west1"
+
+  #Update the default value to your desired region
+}
+
 variable "project_id" {
     description = "The ID of the Google Cloud project"
     default     = "ncaa-d1-baseball-stats-project"

@@ -36,20 +36,27 @@ resource "google_bigquery_dataset" "prod" {
 
 // Create a Google Compute Engine instance
 resource "google_compute_instance" "my_instance" {
-  name         = "my-instance"
-  machine_type = "n1-standard-1"
-  zone         = var.zone
-  project      = var.project_id
+    name         = "ncaa_d1_baseball_stats_vm"
+    machine_type = "n1-standard-1"
+    zone         = var.zone
+    project      = var.project_id
 
-  boot_disk {
-    initialize_params {
-      image = "debian-cloud/debian-10"
+    boot_disk {
+        initialize_params {
+            image = "debian-cloud/debian-10"
+        }
     }
-  }
+
+    network_interface {
+        network = "default"
+        access_config {
+            // Optional access configuration settings
+        }
+    }
 
   metadata_startup_script = <<-EOF
     #!/bin/bash
     apt-get update
-    apt-get install -y mage docker.io
+    apt-get install -y docker.io
   EOF
 }
