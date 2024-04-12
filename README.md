@@ -50,9 +50,11 @@ Setup Instructions:
     cd ~/.ssh
     ssh-keygen -t rsa -f ~/.ssh/ncaa_d1_baseball_stats -C project_user -b 2048
 
-    Upload SSH Key to GCP:
+    Upload SSH Key to GCP: manually or through CLI
 
-    manually or through CLI
+    You have the option of creating a config file in this directory to make connecting to the VM easy and enable port forwarding via VS Code Extension - 
+    https://youtu.be/ae-CV2KfoN0?list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&t=1073 
+    you can watch this video starting at 17:53 to see how to do this
 
 2.0 DOWNLOAD REPOSITORY
 
@@ -92,6 +94,8 @@ Setup Instructions:
         cd ncaa_d1_baseball_stats
     Rename env_template
         mv env_template .env
+    Copy JSON file with Service Account Credentials from your local repository to the same location in the cloned project repo in the VM
+        Should keep the name as gcp-credentials.json and move to the credentials folder
 4.1 INSTALLING ALL REQUIREMENTS FOR VM ENVIRONMENT
     - Install Docker: (Can Include this in Terraform file)
         sudo apt-get update
@@ -111,9 +115,11 @@ NEED TO DO THIS ALL AGAIN AND SEE WHAT's NEEDED
 
     - Need to install Anaconda, POSTGRESQL, PGCLI, CHECK MAGE VIDEOS, CHECK DBT VIDEOS
     - Must install Docker on machine (or should i install Docker for them in VM)
+
 4.2 RUNNING DOCKER IMAGE 
     - docker-compose up
-    - port forwarding
+    - Setup Port Forwarding and connect to localhost:6789. You should see the UI for Mage. If you don't see anything ensure the Docker image is running on port 6789. You may have be having trouble with port forwarding if both are working properly.
+
 4.3 TRIGGERING PIPELINE
     - instructions
         - Make sure service account JSON key is accessible. Can i keep in same location and point in io_config.yml or does it have to be moved in mage folder.
