@@ -88,6 +88,14 @@ Setup Instructions:
         cd ncaa_d1_baseball_stats
     
 4.1 INSTALLING ALL REQUIREMENTS FOR VM ENVIRONMENT
+    - Install Docker: (Can Include this in Terraform file)
+        sudo apt update
+        sudo apt upgrade --yes
+        sudo apt install make
+        # Install docker using the convenience script
+        curl -fsSL https://get.docker.com -o get-docker.sh
+        sudo sh get-docker.sh
+        sudo usermod -aG docker ubuntu
     - Need to install Anaconda, POSTGRESQL, PGCLI, CHECK MAGE VIDEOS, CHECK DBT VIDEOS
     - Must install Docker on machine (or should i install Docker for them in VM)
 4.2 RUNNING DOCKER IMAGE 

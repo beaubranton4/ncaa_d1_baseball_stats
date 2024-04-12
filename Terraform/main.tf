@@ -36,37 +36,45 @@ resource "google_bigquery_dataset" "prod" {
 }
 
 resource "google_compute_instance" "agent-vm" {
-  name         = var.VM_NAME
-  machine_type = var.VM_MACHINE_TYPE
-  zone         = var.VM_ZONE
+    name         = var.VM_NAME
+    machine_type = var.VM_MACHINE_TYPE
+    zone         = var.VM_ZONE
 
-  boot_disk {
-    initialize_params {
-      image = var.VM_MACHINE_IMAGE
-      size=40
+    boot_disk {
+        initialize_params {
+            image = var.VM_MACHINE_IMAGE
+            size=40
+        }
     }
-  }
 
-  service_account {
-    email = "${var.SERVICE_ACCOUNT_NAME}@${var.PROJECT_ID}.iam.gserviceaccount.com"
-    scopes = [
-      "cloud-platform",
-    ]
-  }
-
-  metadata = {
-    ssh-keys = "${var.VM_SSH_USER}:${file(var.SSH_PUB_KEY_FILE)}"
-  }
-
-  network_interface {
-    network = "default"
-    access_config {
-        network_tier = "PREMIUM"
+    service_account {
+        email = "${var.SERVICE_ACCOUNT_NAME}@${var.PROJECT_ID}.iam.gserviceaccount.com"
+        scopes = [
+            "cloud-platform",
+        ]
     }
-  }
 
-  scheduling {
-    on_host_maintenance="MIGRATE"
-  }
+    metadata = {
+        ssh-keys = "${var.VM_SSH_USER}:${file(var.SSH_PUB_KEY_FILE)}"
+    }
 
+    network_interface {
+        network = "default"
+        access_config {
+                network_tier = "PREMIUM"
+        }
+    }
+
+    scheduling {
+        on_host_maintenance="MIGRATE"
+    }
+
+    provisioner "remote-exec" {
+        inline = [
+            "sudo apt-get update",
+            "sudo apt-get install -y docker.io",
+            "sudo systemctl start docker",
+            "sudo systemctl enable docker"
+        ]
+    }
 }
