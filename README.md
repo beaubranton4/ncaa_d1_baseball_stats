@@ -50,6 +50,10 @@ Setup Instructions:
     cd ~/.ssh
     ssh-keygen -t rsa -f ~/.ssh/ncaa_d1_baseball_stats -C project_user -b 2048
 
+    Upload SSH Key to GCP:
+
+    manually or through CLI
+
 2.0 DOWNLOAD REPOSITORY
 
 2.1 UPDATE .ENV or variables.tf
@@ -87,17 +91,17 @@ Setup Instructions:
         git clone https://github.com/beaubranton4/ncaa_d1_baseball_stats.git
         cd ncaa_d1_baseball_stats
     Rename env_template
-    
+        mv env_template .env
 4.1 INSTALLING ALL REQUIREMENTS FOR VM ENVIRONMENT
     - Install Docker: (Can Include this in Terraform file)
         sudo apt-get update
          sudo apt-get install docker.io
+            type in Y
          sudo gpasswd -a $USER docker
          sudo service docker restart
-         quit (exit out of VM)
+         exit (exit out of VM)
          ssh -i ~/.ssh/ncaa_d1_baseball_stats $GCP_VM_SSH_USER@[REPLACE_WITH_EXTERNAL_IP_OF_VM] (log back in)
 
-         -- maybe just need the below working
         sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         sudo chmod +x /usr/local/bin/docker-compose
         - to verify:
