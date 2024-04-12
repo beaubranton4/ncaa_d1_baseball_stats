@@ -70,5 +70,5 @@ spark_config: {}
 tags: []
 type: python
 uuid: ncaa_batting_gcs_to_big_query
-variables_dir: /home/src/mage_data/ncaa_d1_baseball_stats
+variables_dir: /home/src/mage_data/mage
 widgets: []

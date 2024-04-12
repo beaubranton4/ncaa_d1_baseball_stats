@@ -12,7 +12,7 @@ if 'test' not in globals():
 
 config_path = path.join(get_repo_path(), 'io_config.yaml')
 config_profile = 'default'
-bucket_name = os.getenv('GCP_BUCKET_NAME') 
+bucket_name = os.getenv('GCS_BUCKET_NAME') 
 object_key = 'batting_stats/date=' 
 
 def extract_dates(strings):

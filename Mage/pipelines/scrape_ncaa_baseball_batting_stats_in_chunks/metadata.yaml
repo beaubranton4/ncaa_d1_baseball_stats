@@ -91,5 +91,5 @@ tags: []
 type: python
 uuid: scrape_ncaa_baseball_batting_stats_in_chunks
 variables: []
-variables_dir: /home/src/mage_data/ncaa_d1_baseball_stats
+variables_dir: /home/src/mage_data/mage
 widgets: []

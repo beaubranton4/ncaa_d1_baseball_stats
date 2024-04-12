@@ -12,8 +12,8 @@ import pyarrow.parquet as pq
 if 'data_exporter' not in globals():
     from mage_ai.data_preparation.decorators import data_exporter
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = os.getenv('GOOGLE_SERVICE_ACC_KEY_FILEPATH')
-bucket_name = os.getenv('GCP_BUCKET_NAME')
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = os.getenv('GCP_CREDENTIALS')
+bucket_name = os.getenv('GCS_BUCKET_NAME')
 project_id = os.getenv('GCP_PROJECT_ID')
 
 root_path = f'{bucket_name}/batting_stats'

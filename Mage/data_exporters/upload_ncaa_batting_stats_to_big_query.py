@@ -14,7 +14,7 @@ def export_data_to_big_query(df: DataFrame, **kwargs) -> None:
 
     #Replace with variables somewhere
     project_name = os.getenv('GCP_PROJECT_NAME')
-    dataset_name = os.getenv('BIQ_QUERY_DATASET')
+    dataset_name = os.getenv('BIQ_QUERY_DATASET_STG')
     table_name = os.getenv('BIG_QUERY_TABLE_NAME')
     table_id = f'{project_name}.{dataset_name}.{table_name}'
     config_path = path.join(get_repo_path(), 'io_config.yaml')

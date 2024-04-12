@@ -59,7 +59,13 @@ Setup Instructions:
 
 3.0 TERRAFORM SETUP 
 - Install Terraform
-- From terminal, navigate to the terraform directory:
+- From terminal, navigate to the parent directory of this project:
+    
+    set -o allexport && source .env && set +o allexport
+    terraform -chdir=terraform init
+    terraform -chdir=terraform plan
+    terraform -chdir=terraform apply
+
     - run: terraform apply
     - type: yes
     - hit enter
