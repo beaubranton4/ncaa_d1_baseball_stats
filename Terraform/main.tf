@@ -68,13 +68,4 @@ resource "google_compute_instance" "agent-vm" {
     scheduling {
         on_host_maintenance="MIGRATE"
     }
-
-    provisioner "remote-exec" {
-        inline = [
-            "sudo apt-get update",
-            "sudo apt-get install -y docker.io",
-            "sudo systemctl start docker",
-            "sudo systemctl enable docker"
-        ]
-    }
 }

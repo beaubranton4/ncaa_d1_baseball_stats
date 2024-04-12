@@ -86,20 +86,30 @@ Setup Instructions:
     Clone the Project repo on the VM
         git clone https://github.com/beaubranton4/ncaa_d1_baseball_stats.git
         cd ncaa_d1_baseball_stats
+    Rename env_template
     
 4.1 INSTALLING ALL REQUIREMENTS FOR VM ENVIRONMENT
     - Install Docker: (Can Include this in Terraform file)
-        sudo apt update
-        sudo apt upgrade --yes
-        sudo apt install make
-        # Install docker using the convenience script
-        curl -fsSL https://get.docker.com -o get-docker.sh
-        sudo sh get-docker.sh
-        sudo usermod -aG docker ubuntu
+        sudo apt-get update
+         sudo apt-get install docker.io
+         sudo gpasswd -a $USER docker
+         sudo service docker restart
+         quit (exit out of VM)
+         ssh -i ~/.ssh/ncaa_d1_baseball_stats $GCP_VM_SSH_USER@[REPLACE_WITH_EXTERNAL_IP_OF_VM] (log back in)
+
+         -- maybe just need the below working
+        sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        sudo chmod +x /usr/local/bin/docker-compose
+        - to verify:
+        docker-compose --version
+
+NEED TO DO THIS ALL AGAIN AND SEE WHAT's NEEDED
+
     - Need to install Anaconda, POSTGRESQL, PGCLI, CHECK MAGE VIDEOS, CHECK DBT VIDEOS
     - Must install Docker on machine (or should i install Docker for them in VM)
 4.2 RUNNING DOCKER IMAGE 
     - docker-compose up
+    - port forwarding
 4.3 TRIGGERING PIPELINE
     - instructions
         - Make sure service account JSON key is accessible. Can i keep in same location and point in io_config.yml or does it have to be moved in mage folder.
