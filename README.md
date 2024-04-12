@@ -83,6 +83,10 @@ Setup Instructions:
         gcloud compute instances start $GCP_VM_NAME --zone $GCP_ZONE --project $GCP_PROJECT_ID
     Get the External IP:
         ssh -i ~/.ssh/ncaa_d1_baseball_stats $GCP_VM_SSH_USER@[REPLACE_WITH_EXTERNAL_IP_OF_VM]
+    Clone the Project repo on the VM
+        git clone https://github.com/beaubranton4/ncaa_d1_baseball_stats.git
+        cd ncaa_d1_baseball_stats
+    
 4.1 INSTALLING ALL REQUIREMENTS FOR VM ENVIRONMENT
     - Need to install Anaconda, POSTGRESQL, PGCLI, CHECK MAGE VIDEOS, CHECK DBT VIDEOS
     - Must install Docker on machine (or should i install Docker for them in VM)
