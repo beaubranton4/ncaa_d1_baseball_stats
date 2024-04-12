@@ -17,7 +17,8 @@ Setup Instructions:
     - Suggested Name:
     - Suggested ID:
     - You can choose any ID and name that you want, but you will need to update certain variables with the ID and name that you chose for your Google Cloud Project. If you use the Suggested Name and Suggested ID, these variables will default to what was suggested.
-1.1 SERVICE ACCOUNT:
+
+1.1 CREATE SERVICE ACCOUNT AND SAVE JSON FILE:
 - Create a Service Account and Generate a JSON Key to access and manage the project with Terraform
     - 
     - https://console.cloud.google.com/iam-admin/serviceaccounts
@@ -50,7 +51,8 @@ Setup Instructions:
     - Next, we are required to enable Specific Google APIs (click following links and hit enable):
         - BigQuery API: https://console.developers.google.com/apis/api/bigquery.googleapis.com
         - Compute Engine API: https://console.cloud.google.com/marketplace/product/google/compute.googleapis.com
-1.3 GENERATE SSH KEYS
+
+1.3 GENERATE SSH KEYS (FOR VM)
     Run the following:
     
     cd ~/.ssh
@@ -122,7 +124,7 @@ Setup Instructions:
 5.0 RUNNING MAGE VIA DOCKER IMAGE 
     cd ~/ncaa_d1_baseball_stats
     - docker-compose up
-    - Setup Port Forwarding and connect to localhost:6789. You should see the UI for Mage. If you don't see anything ensure the Docker image is running on port 6789. You may have be having trouble with port forwarding if both are working properly.
+    - Enable Port Forwarding and connect to localhost:6789. You should see the UI for Mage. If you don't see anything ensure the Docker image is running on port 6789. You may have be having trouble with port forwarding if both are working properly.
 
 5.1 TRIGGERING MAGE PIPELINES
     - There are two production pipelines in this Mage Project:
