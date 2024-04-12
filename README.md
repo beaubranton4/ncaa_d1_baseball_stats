@@ -5,6 +5,10 @@ An end to end data pipeline that scrapes, stores, transforms and visualizes stat
 
 Setup Instructions:
 
+
+0.0 DOWNLOAD PROJECT REPOSITORY
+
+
 1.0 GOOGLE CLOUD SETUP (Consider using CLI if that makes it easier)
 
 - Setup a Google Cloud Account
@@ -39,7 +43,9 @@ Setup Instructions:
         setup you can just create a single service account with all of the following 
         roles.
     - Create the Service Account
-    - Click on the Service Account and Select "Keys". Hit the "Add Key" button, select "Create Key", select the "JSON" button and create. This will save the JSON Key to your computer. Move the JSON key to the rootpath of the downloaded repo and also to the mage folder?
+    - Click on the Service Account and Select "Keys". Hit the "Add Key" button, select "Create Key", select the "JSON" button and create. This will save the JSON Key to your computer. 
+    - Rename the json file gcp-credentials.json and move it to the credentials folder in this project repository on your machine (If stored elsewhere you will need to update the file path variable in the .env file accordingly)
+
 1.2 ENABLE APIS
     - Next, we are required to enable Specific Google APIs (click following links and hit enable):
         - BigQuery API: https://console.developers.google.com/apis/api/bigquery.googleapis.com
@@ -51,16 +57,14 @@ Setup Instructions:
     ssh-keygen -t rsa -f ~/.ssh/ncaa_d1_baseball_stats -C project_user -b 2048
 
     Upload SSH Key to GCP: manually or through CLI
-
+    
     You have the option of creating a config file in this directory to make connecting to the VM easy and enable port forwarding via VS Code Extension - 
     https://youtu.be/ae-CV2KfoN0?list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&t=1073 
     you can watch this video starting at 17:53 to see how to do this
 
-2.0 DOWNLOAD REPOSITORY
-
 2.1 UPDATE .ENV or variables.tf
-- Update the variables.tf file:
-    - The easiest way is to simply update the default values for each variable
+- Rename env_template to .env
+- Update the following variables in your newly named .env file:
     - You MUST update the following variables in variables.tf:
         - "credentials": with a path to your service account  JSON key in order for terraform to be granted access to create all the necessary resource
         - "project_id": the project_id of the Google Project you created in the earlier step. IF you used the suggested project_name you can leave this as is.
@@ -81,14 +85,17 @@ Setup Instructions:
     - run: terraform apply
     - type: yes
     - hit enter
-- Voila! Your Data Lake, VM and Data Warehouse have been created.
+- Voila! Your Data Lake, Data Warehouse and VM have been created.
 
 
-4.0 VM SETUP
+4.0 VM SETUP (OPTIONAL - If you want these pipelines to run on the cloud, this section must be completed. If you just want to run these pipelines locally, you can skip to instruction 4.2 but be warned that you will need to keep your computer running for 3 or 4 hours to fully complete the project setup)
     Run the VM:
         gcloud compute instances start $GCP_VM_NAME --zone $GCP_ZONE --project $GCP_PROJECT_ID
+        This can also be done via GCP
     Get the External IP:
         ssh -i ~/.ssh/ncaa_d1_baseball_stats $GCP_VM_SSH_USER@[REPLACE_WITH_EXTERNAL_IP_OF_VM]
+        If you created a config file in you ~/.ssh folder you can update the IP Address there and remote ssh into the VM
+
     Clone the Project repo on the VM
         git clone https://github.com/beaubranton4/ncaa_d1_baseball_stats.git
         cd ncaa_d1_baseball_stats
@@ -96,6 +103,7 @@ Setup Instructions:
         mv env_template .env
     Copy JSON file with Service Account Credentials from your local repository to the same location in the cloned project repo in the VM
         Should keep the name as gcp-credentials.json and move to the credentials folder
+
 4.1 INSTALLING ALL REQUIREMENTS FOR VM ENVIRONMENT
     - Install Docker: (Can Include this in Terraform file)
         sudo apt-get update
@@ -111,22 +119,26 @@ Setup Instructions:
         - to verify:
         docker-compose --version
 
-NEED TO DO THIS ALL AGAIN AND SEE WHAT's NEEDED
-
-    - Need to install Anaconda, POSTGRESQL, PGCLI, CHECK MAGE VIDEOS, CHECK DBT VIDEOS
-    - Must install Docker on machine (or should i install Docker for them in VM)
-
-4.2 RUNNING DOCKER IMAGE 
+5.0 RUNNING MAGE VIA DOCKER IMAGE 
+    cd ~/ncaa_d1_baseball_stats
     - docker-compose up
     - Setup Port Forwarding and connect to localhost:6789. You should see the UI for Mage. If you don't see anything ensure the Docker image is running on port 6789. You may have be having trouble with port forwarding if both are working properly.
 
-4.3 TRIGGERING PIPELINE
-    - instructions
-        - Make sure service account JSON key is accessible. Can i keep in same location and point in io_config.yml or does it have to be moved in mage folder.
-        - Updating Variables to match terraform and Infrastructure
-        - Update  GOOGLE_SERVICE_ACC_KEY_FILEPATH: in io_config.yml
-        - Run and Schedule
-5.0 Setting Up DBT 
-6.0 Build Dashboard
+5.1 TRIGGERING MAGE PIPELINES
+    - There are two production pipelines in this Mage Project:
+        scrape_ncaa_d1_baseball_stats: this pipeline scrapes data from all box scores from all d1 baseball games in the 2024 season that have not yet been scraped. THE FIRST TIME THIS PIPELINE RUNS WILL TAKE 2-4 HOURS (run the test pipeline if you don't have the time to wait)
+        -ncaa_batting_gcs_to_big_query: this pipeline moves data from GCS storage bucket to BigQuery. It's set to run daily and also is triggered to run anytime "scrape_ncaa_d1_baseball_stats" or "test_scrape_ncaa_d1_baseball_stats" is run successfully
 
-7.0 Destroying Resources
+    - If you just want to test that everything is working i have created a test_pipeline script that only scrapes data from one day. Alternatively, you can run the "scrape_ncaa_d1_baseball_stats", leave the Docker image and VM running for a few hours and check back:
+    - Click on the test pipeline "test_scrape_ncaa_d1_baseball_stats" and trigger it to "Run Once"
+    - Run the first pipeline (the very first run may take up to 3 hours as data is scraped for every day since the beginning of the 2024 season 2/16/2024)
+        - The script is built so that it will check what dates have already been scraped (in GCS) and only scrape remaining
+        - If all dates have been scraped, it will rescrape the last two days worth of data in case there have been updates to box scores 
+    - Pipeline triggers should already be active and should run every 6 hours. As long as you keep the VM the docker image on your VM running, these pipelines will run and you should receive stats from games that happen daily (until the end of the season of course 6/23/2024)
+
+6.0 Setting Up DBT 
+7.0 Build Dashboard
+
+8.0 Destroying Resources
+
+Either on your local machine or your VM, navigate to the parent directory of this project:

@@ -8,6 +8,7 @@ from os import path
 import os  
 import pyarrow as pa
 import pyarrow.parquet as pq
+from mage_ai.orchestration.triggers.api import trigger_pipeline
 
 if 'data_exporter' not in globals():
     from mage_ai.data_preparation.decorators import data_exporter
@@ -44,4 +45,9 @@ def export_data_to_google_cloud_storage(df: DataFrame, **kwargs) -> None:
             root_path=root_path,
             partition_cols=['date'],
             filesystem=gcs
-    )
+        )
+        
+
+        trigger_pipeline(
+            'ncaa_batting_gcs_to_big_query'        # Required: enter the UUID of the pipeline to trigger
+        )

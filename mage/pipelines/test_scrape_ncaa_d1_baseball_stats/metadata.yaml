@@ -9,16 +9,18 @@ blocks:
   executor_type: local_python
   has_callback: false
   language: python
-  name: get_all_date_chunks_for_scraping
+  name: test_get_single_date_for_scraping
   retry_config: null
   status: updated
   timeout: null
   type: data_loader
   upstream_blocks: []
-  uuid: get_all_date_chunks_for_scraping
+  uuid: test_get_single_date_for_scraping
 - all_upstream_blocks_executed: false
   color: teal
-  configuration: {}
+  configuration:
+    file_source:
+      path: custom/scrape_batting_box_scores_daily_chunks.py
   downstream_blocks:
   - transform_batting_box_score_chunks
   executor_config: null
@@ -27,15 +29,17 @@ blocks:
   language: python
   name: scrape_batting_box_scores_daily_chunks
   retry_config: null
-  status: updated
+  status: not_executed
   timeout: null
   type: custom
   upstream_blocks:
-  - get_all_date_chunks_for_scraping
+  - test_get_single_date_for_scraping
   uuid: scrape_batting_box_scores_daily_chunks
 - all_upstream_blocks_executed: false
   color: null
-  configuration: {}
+  configuration:
+    file_source:
+      path: transformers/transform_batting_box_score_chunks.py
   downstream_blocks:
   - export_batting_box_score_daily_chunks_to_gcs
   executor_config: null
@@ -44,7 +48,7 @@ blocks:
   language: python
   name: transform_batting_box_score_chunks
   retry_config: null
-  status: updated
+  status: not_executed
   timeout: null
   type: transformer
   upstream_blocks:
@@ -52,7 +56,9 @@ blocks:
   uuid: transform_batting_box_score_chunks
 - all_upstream_blocks_executed: false
   color: null
-  configuration: {}
+  configuration:
+    file_source:
+      path: data_exporters/export_batting_box_score_daily_chunks_to_gcs.py
   downstream_blocks: []
   executor_config: null
   executor_type: local_python
@@ -68,18 +74,16 @@ blocks:
   uuid: export_batting_box_score_daily_chunks_to_gcs
 cache_block_output_in_memory: false
 callbacks: []
-concurrency_config:
-  block_run_limit: 1
-  pipeline_run_limit: 3
+concurrency_config: {}
 conditionals: []
-created_at: '2024-03-29 23:07:16.694843+00:00'
+created_at: '2024-04-12 22:19:19.920964+00:00'
 data_integration: null
 description: null
 executor_config: {}
 executor_count: 1
 executor_type: null
 extensions: {}
-name: scrape_ncaa_baseball_batting_stats_in_chunks
+name: test_scrape_ncaa_d1_baseball_stats
 notification_config: {}
 remote_variables_dir: null
 retry_config: {}
@@ -89,7 +93,6 @@ settings:
 spark_config: {}
 tags: []
 type: python
-uuid: scrape_ncaa_baseball_batting_stats_in_chunks
-variables: []
+uuid: test_scrape_ncaa_d1_baseball_stats
 variables_dir: /home/src/mage_data/mage
 widgets: []

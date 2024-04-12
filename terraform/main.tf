@@ -27,12 +27,14 @@ resource "google_bigquery_dataset" "stg" {
   dataset_id = var.DATASET_STG
   location = var.REGION
   project = var.PROJECT_ID
+  delete_contents_on_destroy = true
 }
 
 resource "google_bigquery_dataset" "prod" {
   dataset_id = var.DATASET_PROD
   location = var.REGION
   project = var.PROJECT_ID
+  delete_contents_on_destroy = true
 }
 
 resource "google_compute_instance" "agent-vm" {
@@ -43,7 +45,7 @@ resource "google_compute_instance" "agent-vm" {
     boot_disk {
         initialize_params {
             image = var.VM_MACHINE_IMAGE
-            size=40
+            size=30
         }
     }
 
