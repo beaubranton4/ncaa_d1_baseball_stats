@@ -17,6 +17,8 @@ Setup Instructions:
 - Create a Service Account and Generate a JSON Key to access and manage the project with Terraform
     - 
     - https://console.cloud.google.com/iam-admin/serviceaccounts
+    - Suggested Service Account Name:ncaa_d1_baseball_stats_service (Can use makefile)
+    - Suggested Service Account ID: ncaa_d1_baseball_stats_service (Can use makefile)
     - Grant proper permissions to Service Account
         - Owner: This should give access to most everything but just in case...
         - Specific Roles for Terraform (IaC) Setup:
@@ -43,6 +45,10 @@ Setup Instructions:
         - BigQuery API: https://console.developers.google.com/apis/api/bigquery.googleapis.com
         - Compute Engine API: https://console.cloud.google.com/marketplace/product/google/compute.googleapis.com
 1.3 GENERATE SSH KEYS
+    Run the following:
+    
+    cd ~/.ssh
+    ssh-keygen -t rsa -f ~/.ssh/ncaa_d1_baseball_stats -C project_user -b 2048
 
 2.0 DOWNLOAD REPOSITORY
 
@@ -73,6 +79,10 @@ Setup Instructions:
 
 
 4.0 VM SETUP
+    Run the VM:
+        gcloud compute instances start $GCP_VM_NAME --zone $GCP_ZONE --project $GCP_PROJECT_ID
+    Get the External IP:
+        ssh -i ~/.ssh/ncaa_d1_baseball_stats $GCP_VM_SSH_USER@[REPLACE_WITH_EXTERNAL_IP_OF_VM]
 4.1 INSTALLING ALL REQUIREMENTS FOR VM ENVIRONMENT
     - Need to install Anaconda, POSTGRESQL, PGCLI, CHECK MAGE VIDEOS, CHECK DBT VIDEOS
     - Must install Docker on machine (or should i install Docker for them in VM)
