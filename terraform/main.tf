@@ -45,8 +45,11 @@ resource "google_compute_instance" "agent-vm" {
     boot_disk {
         initialize_params {
             image = var.VM_MACHINE_IMAGE
-            size=40
+            size=20
+            type = "pd-balanced"
         }
+
+        mode = "READ_WRITE"
     }
 
     service_account {
@@ -68,6 +71,15 @@ resource "google_compute_instance" "agent-vm" {
     }
 
     scheduling {
-        on_host_maintenance="MIGRATE"
+      automatic_restart   = true
+      on_host_maintenance = "MIGRATE"
+      preemptible         = false
+      provisioning_model  = "STANDARD"
+    }
+
+    shielded_instance_config {
+      enable_integrity_monitoring = true
+      enable_secure_boot          = false
+      enable_vtpm                 = true
     }
 }

@@ -98,19 +98,13 @@ Setup Instructions:
         ssh -i ~/.ssh/ncaa_d1_baseball_stats $GCP_VM_SSH_USER@[REPLACE_WITH_EXTERNAL_IP_OF_VM]
         If you created a config file in you ~/.ssh folder you can update the IP Address there and remote ssh into the VM
 
-    Clone the Project repo on the VM
-        git clone https://github.com/beaubranton4/ncaa_d1_baseball_stats.git
-        cd ncaa_d1_baseball_stats
-    Rename env_template
-        mv env_template .env
-    Copy JSON file with Service Account Credentials from your local repository to the same location in the cloned project repo in the VM
-        Should keep the name as gcp-credentials.json and move to the credentials folder
 
 4.1 INSTALLING ALL REQUIREMENTS FOR VM ENVIRONMENT
     - Install Docker: (Can Include this in Terraform file)
         sudo apt-get update
-         sudo apt-get install docker.io
+        sudo apt-get install docker.io
             type in Y
+         sudo groupadd docker
          sudo gpasswd -a $USER docker
          sudo service docker restart
          exit (exit out of VM)
@@ -119,11 +113,19 @@ Setup Instructions:
         sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         sudo chmod +x /usr/local/bin/docker-compose
         - to verify:
-        docker-compose --version
+        sudo docker-compose --version
+
+4.2 Clone the Project repo on the VM
+        git clone https://github.com/beaubranton4/ncaa_d1_baseball_stats.git
+        cd ncaa_d1_baseball_stats
+    Rename env_template
+        mv env_template .env
+    Copy JSON file with Service Account Credentials from your local repository to the same location in the cloned project repo in the VM
+        Should keep the name as gcp-credentials.json and move to the credentials folder
 
 5.0 RUNNING MAGE VIA DOCKER IMAGE 
     cd ~/ncaa_d1_baseball_stats
-    - docker-compose up
+    - sudo docker-compose up
     - Enable Port Forwarding and connect to localhost:6789. You should see the UI for Mage. If you don't see anything ensure the Docker image is running on port 6789. You may have be having trouble with port forwarding if both are working properly.
 
 5.1 TRIGGERING MAGE PIPELINES
