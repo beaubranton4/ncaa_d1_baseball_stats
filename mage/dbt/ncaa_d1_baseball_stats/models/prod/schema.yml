@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: fct_cumulative_player_batting_stats_by_day
+    description: >
+      Aggregated table of total stats for each player including the total number of games played, total runs scored, total hits, total at bats, total walks, total strikeouts, and total home runs.
+      You can think of this as a snapshot table to lookup stats at any given point of the season of each player.
+      
+  - name: fct_cumulative_team_batting_stats_by_day
+    description: >
+      Aggregated table of total stats for each team, including the total number of games played, total runs scored, total hits, total at bats, total walks, total strikeouts, and total home runs.
+      You can think of this as a snapshot table to lookup stats at any given point of the season per team.  
+  - name: fct_game_stats
+    description: >
+      Aggregated table total stats for each game, including the winning team, losing team, and the final score.

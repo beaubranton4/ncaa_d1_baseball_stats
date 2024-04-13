@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: stg
+    database: "{{ env_var('GCP_PROJECT_ID') }}"
+    schema: stg_ncaa_d1_baseball_stats #To replace with env var
+    tables:
+      - name: batting_stats #To replace with env var
+
+models:
+    - name: stg_all_batting_box_scores
+      description: >
+        All batting box scores scraped on a daily basis for all Division 1 Baseball Games in the 2024 Season.
+        Each row contains a hitter's stats for a given game.
+      

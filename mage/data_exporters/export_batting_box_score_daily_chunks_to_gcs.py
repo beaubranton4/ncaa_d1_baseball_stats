@@ -49,5 +49,5 @@ def export_data_to_google_cloud_storage(df: DataFrame, **kwargs) -> None:
         
 
         trigger_pipeline(
-            'ncaa_batting_gcs_to_big_query'        # Required: enter the UUID of the pipeline to trigger
+            'ncaa_batting_gcs_to_big_query'
         )

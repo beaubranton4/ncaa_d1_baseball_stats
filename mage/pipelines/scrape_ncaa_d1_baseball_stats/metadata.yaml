@@ -1,5 +1,5 @@
 blocks:
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration:
     dynamic: true
@@ -14,7 +14,8 @@ blocks:
   status: updated
   timeout: null
   type: data_loader
-  upstream_blocks: []
+  upstream_blocks:
+  - check_test_pipeline_not_running
   uuid: get_all_date_chunks_for_scraping
 - all_upstream_blocks_executed: false
   color: teal
@@ -66,6 +67,22 @@ blocks:
   upstream_blocks:
   - transform_batting_box_score_chunks
   uuid: export_batting_box_score_daily_chunks_to_gcs
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - get_all_date_chunks_for_scraping
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: check_test_pipeline_not_running
+  retry_config: null
+  status: updated
+  timeout: null
+  type: sensor
+  upstream_blocks: []
+  uuid: check_test_pipeline_not_running
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config:

@@ -30,6 +30,13 @@ resource "google_bigquery_dataset" "stg" {
   delete_contents_on_destroy = true
 }
 
+resource "google_bigquery_dataset" "dev" {
+  dataset_id = var.DATASET_DEV
+  location = var.REGION
+  project = var.PROJECT_ID
+  delete_contents_on_destroy = true
+}
+
 resource "google_bigquery_dataset" "prod" {
   dataset_id = var.DATASET_PROD
   location = var.REGION
