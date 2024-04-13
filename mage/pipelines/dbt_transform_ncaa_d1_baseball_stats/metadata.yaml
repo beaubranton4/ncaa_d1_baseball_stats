@@ -22,12 +22,12 @@ blocks:
   language: sql
   name: dbt/ncaa_d1_baseball_stats/models/stg/stg_all_batting_box_scores
   retry_config: null
-  status: executed
+  status: failed
   timeout: null
   type: dbt
   upstream_blocks: []
   uuid: dbt/ncaa_d1_baseball_stats/models/stg/stg_all_batting_box_scores
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration:
     dbt: {}
@@ -57,7 +57,7 @@ blocks:
   - dbt/ncaa_d1_baseball_stats/models/stg/stg_all_batting_box_scores
   - dbt/ncaa_d1_baseball_stats/models/stg/stg_all_batting_box_scores
   uuid: dbt/ncaa_d1_baseball_stats/models/stg/dim_2024_season_date_spine
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration:
     dbt: {}
