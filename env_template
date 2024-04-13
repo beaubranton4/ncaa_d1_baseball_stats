@@ -13,8 +13,8 @@ GCP_SERVICE_ACCOUNT_NAME=ncaa-d1-baseball-stats-service
 GCS_BUCKET_NAME=ncaa_d1_baseball_stats_bucket
 
 #BigQuery
-BIG_QUERY_DATASET_DEV=dev_ncaa_d1_baseball_stats
 BIQ_QUERY_DATASET_STG=stg_ncaa_d1_baseball_stats
+# BIG_QUERY_DATASET_INT=dev_ncaa_d1_baseball_stats
 BIQ_QUERY_DATASET_PROD=prod_ncaa_d1_baseball_stats
 BIQ_QUERY_TABLE_NAME=batting_stats
 
@@ -47,7 +47,7 @@ TF_VAR_ZONE=$GCP_ZONE
 #GCS and BigQuery Resources
 TF_VAR_BUCKET_NAME=$GCS_BUCKET_NAME
 TF_VAR_DATASET_STG=$BIQ_QUERY_DATASET_STG
-TF_VAR_DATASET_INT=$BIQ_QUERY_DATASET_INT
+# TF_VAR_DATASET_INT=$BIQ_QUERY_DATASET_INT
 TF_VAR_DATASET_PROD=$BIQ_QUERY_DATASET_PROD
 
 #VM Resource
