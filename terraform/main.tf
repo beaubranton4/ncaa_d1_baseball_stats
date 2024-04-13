@@ -45,7 +45,7 @@ resource "google_compute_instance" "agent-vm" {
     boot_disk {
         initialize_params {
             image = var.VM_MACHINE_IMAGE
-            size=30
+            size=40
         }
     }
 
