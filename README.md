@@ -59,6 +59,10 @@ Setup Instructions:
     ssh-keygen -t rsa -f ~/.ssh/ncaa_d1_baseball_stats -C project_user -b 2048
 
     Upload SSH Key to GCP: manually or through CLI
+    Run: 
+        cat ncaa_d1_baseball_stats.pub
+    
+    To receive ssh key to paste into metadata section in compute engine
     
     You have the option of creating a config file in this directory to make connecting to the VM easy and enable port forwarding via VS Code Extension - 
     https://youtu.be/ae-CV2KfoN0?list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&t=1073 
@@ -102,14 +106,9 @@ Setup Instructions:
 4.1 INSTALLING ALL REQUIREMENTS FOR VM ENVIRONMENT
     - Install Docker: (Can Include this in Terraform file)
         sudo apt-get update
-        sudo apt-get install docker.io
-            type in Y
-         sudo groupadd docker
-         sudo gpasswd -a $USER docker
-         sudo service docker restart
-         exit (exit out of VM)
-         ssh -i ~/.ssh/ncaa_d1_baseball_stats $GCP_VM_SSH_USER@[REPLACE_WITH_EXTERNAL_IP_OF_VM] (log back in)
-
+        sudo apt-get install docker.io && y
+        sudo groupadd docker
+        sudo gpasswd -a $USER docker
         sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
         sudo chmod +x /usr/local/bin/docker-compose
         - to verify:
@@ -140,7 +139,7 @@ Setup Instructions:
         - If all dates have been scraped, it will rescrape the last two days worth of data in case there have been updates to box scores 
     - Pipeline triggers should already be active and should run every 6 hours. As long as you keep the VM the docker image on your VM running, these pipelines will run and you should receive stats from games that happen daily (until the end of the season of course 6/23/2024)
 
-6.0 Setting Up DBT 
+6.0 Partitioning and Data Warehouse Optimization
 7.0 Build Dashboard
 
 8.0 Destroying Resources

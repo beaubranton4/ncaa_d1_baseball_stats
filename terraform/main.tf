@@ -30,6 +30,13 @@ resource "google_bigquery_dataset" "stg" {
   delete_contents_on_destroy = true
 }
 
+resource "google_bigquery_dataset" "development" {
+  dataset_id = "dev_ncaa_d1_baseball_stats"
+  location = var.REGION
+  project = var.PROJECT_ID
+  delete_contents_on_destroy = true
+}
+
 resource "google_bigquery_dataset" "prod" {
   dataset_id = var.DATASET_PROD
   location = var.REGION
@@ -83,3 +90,4 @@ resource "google_compute_instance" "agent-vm" {
       enable_vtpm                 = true
     }
 }
+

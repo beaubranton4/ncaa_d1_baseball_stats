@@ -14,7 +14,7 @@ GCS_BUCKET_NAME=ncaa_d1_baseball_stats_bucket
 
 #BigQuery
 BIQ_QUERY_DATASET_STG=stg_ncaa_d1_baseball_stats
-# BIG_QUERY_DATASET_INT=dev_ncaa_d1_baseball_stats
+BIG_QUERY_DATASET_DEV=dev_ncaa_d1_baseball_stats
 BIQ_QUERY_DATASET_PROD=prod_ncaa_d1_baseball_stats
 BIQ_QUERY_TABLE=batting_stats
 
@@ -22,7 +22,7 @@ BIQ_QUERY_TABLE=batting_stats
 
 GCP_VM_NAME=ncaa-d1-baseball-stats-vm
 GCP_VM_MACHINE_TYPE=e2-standard-4
-GCP_VM_MACHINE_IMAGE=ubuntu-2004-focal-v20220110
+GCP_VM_MACHINE_IMAGE=projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20240307b
 GCP_VM_SSH_USER=project_user
 GCP_SSH_PUB_KEY_FILE=~/.ssh/ncaa_d1_baseball_stats.pub
 
@@ -46,7 +46,7 @@ TF_VAR_ZONE=$GCP_ZONE
 #GCS and BigQuery Resources
 TF_VAR_BUCKET_NAME=$GCS_BUCKET_NAME
 TF_VAR_DATASET_STG=$BIQ_QUERY_DATASET_STG
-# TF_VAR_DATASET_INT=$BIQ_QUERY_DATASET_INT
+TF_VAR_DATASET_DEV=$BIQ_QUERY_DATASET_DEV
 TF_VAR_DATASET_PROD=$BIQ_QUERY_DATASET_PROD
 
 #VM Resource

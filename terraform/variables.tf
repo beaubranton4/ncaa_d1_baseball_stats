@@ -6,7 +6,7 @@ variable "REGION" {}
 variable "ZONE" {}
 variable "BUCKET_NAME" {}
 variable "DATASET_STG" {}
-
+variable "DATASET_DEV" {}
 variable "DATASET_PROD" {}
 variable "VM_NAME" {}
 variable "VM_MACHINE_TYPE" {}
