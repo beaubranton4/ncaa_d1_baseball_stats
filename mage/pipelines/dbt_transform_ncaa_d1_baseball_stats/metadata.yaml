@@ -50,7 +50,7 @@ blocks:
   language: sql
   name: dim_2024_season_date_spine
   retry_config: null
-  status: failed
+  status: updated
   timeout: null
   type: dbt
   upstream_blocks:

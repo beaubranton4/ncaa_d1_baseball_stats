@@ -2,7 +2,7 @@
   
     
 
-    create or replace table `ncaa-d1-baseball-stats-project`.`prod_d1_baseball_stats_prod`.`fct_game_stats`
+    create or replace table `ncaa-d1-baseball-stats-project`.`prod_ncaa_d1_baseball_stats`.`fct_game_stats`
       
     
     
@@ -11,7 +11,7 @@
     as (
       with daily_batting_stats as(
     select *
-    from `ncaa-d1-baseball-stats-project`.`prod_d1_baseball_stats_prod`.`stg_all_batting_box_scores`
+    from `ncaa-d1-baseball-stats-project`.`prod_ncaa_d1_baseball_stats`.`stg_all_batting_stats`
 )
 
 , team_game_sums as(

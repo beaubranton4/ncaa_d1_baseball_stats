@@ -14,7 +14,7 @@ ncaa_d1_baseball_stats:
       type: bigquery
     prod:
       # dataset: "{{ env_var('BIG_QUERY_TABLE_NAME_STG') }}" 
-      schema: prod_d1_baseball_stats_prod
+      schema: prod_ncaa_d1_baseball_stats
       fixed_retries: 1
       keyfile: "{{ env_var('GCP_CREDENTIALS') }}"
       location: "{{ env_var('GCP_REGION') }}"

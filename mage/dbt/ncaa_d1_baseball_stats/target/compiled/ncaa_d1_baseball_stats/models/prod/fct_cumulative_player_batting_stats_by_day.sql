@@ -1,10 +1,10 @@
 with daily_batting_stats as(
     select *
-    from `ncaa-d1-baseball-stats-project`.`prod_d1_baseball_stats_prod`.`stg_all_batting_box_scores`
+    from `ncaa-d1-baseball-stats-project`.`prod_ncaa_d1_baseball_stats`.`stg_all_batting_stats`
 )
 
 , date_spine as (
-select * from `ncaa-d1-baseball-stats-project`.`prod_d1_baseball_stats_prod`.`dim_2024_season_date_spine`
+select * from `ncaa-d1-baseball-stats-project`.`prod_ncaa_d1_baseball_stats`.`dim_2024_season_date_spine`
 )
 
 , cumulative_stats as(
