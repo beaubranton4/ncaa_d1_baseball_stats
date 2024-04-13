@@ -8,7 +8,6 @@ variable "BUCKET_NAME" {}
 variable "DATASET_STG" {}
 
 variable "DATASET_PROD" {}
-variable "TABLE_NAME" {}
 variable "VM_NAME" {}
 variable "VM_MACHINE_TYPE" {}
 variable "VM_MACHINE_IMAGE" {}
