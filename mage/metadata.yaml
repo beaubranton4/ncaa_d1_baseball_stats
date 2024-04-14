@@ -55,3 +55,6 @@ project_uuid: d76b8c300f41462d9001ca3eb341a521
 help_improve_mage: true
 features:
   command_center: true
+
+queue_config:
+  concurrency: 1

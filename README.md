@@ -58,9 +58,9 @@ Setup Instructions:
     cd ~/.ssh
     ssh-keygen -t rsa -f ~/.ssh/ncaa_d1_baseball_stats -C project_user -b 2048
 
-    Upload SSH Key to GCP: manually or through CLI
-    Run: 
-        cat ncaa_d1_baseball_stats.pub
+    #Upload SSH Key to GCP: manually or through CLI
+    #Run (don't really need this part): 
+     #   cat ncaa_d1_baseball_stats.pub
     
     To receive ssh key to paste into metadata section in compute engine
     
@@ -102,25 +102,28 @@ Setup Instructions:
         ssh -i ~/.ssh/ncaa_d1_baseball_stats $GCP_VM_SSH_USER@[REPLACE_WITH_EXTERNAL_IP_OF_VM]
         If you created a config file in you ~/.ssh folder you can update the IP Address there and remote ssh into the VM
 
-
-4.1 INSTALLING ALL REQUIREMENTS FOR VM ENVIRONMENT
-    - Install Docker: (Can Include this in Terraform file)
-        sudo apt-get update
-        sudo apt-get install docker.io && y
-        sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-        sudo chmod +x /usr/local/bin/docker-compose
-
-        - to verify:
-        sudo docker run hello-world
-        sudo docker-compose --version
-
-4.2 Clone the Project repo on the VM
+4.0 Clone the Project repo on the VM
         git clone https://github.com/beaubranton4/ncaa_d1_baseball_stats.git
         cd ncaa_d1_baseball_stats
     Rename env_template
         mv env_template .env
     Copy JSON file with Service Account Credentials from your local repository to the same location in the cloned project repo in the VM
         Should keep the name as gcp-credentials.json and move to the credentials folder
+
+4.1 INSTALLING ALL REQUIREMENTS FOR VM ENVIRONMENT
+    - Install Docker: 
+        sudo apt-get update
+        sudo apt-get install docker.io 
+        sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        sudo chmod +x /usr/local/bin/docker-compose
+        sudo groupadd docker
+        sudo usermod -aG docker $USER
+        newgrp docker
+        sudo service docker restart
+        - to verify:
+        sudo docker run hello-world
+        sudo docker-compose --version
+
 
 5.0 RUNNING MAGE VIA DOCKER IMAGE 
     cd ~/ncaa_d1_baseball_stats
