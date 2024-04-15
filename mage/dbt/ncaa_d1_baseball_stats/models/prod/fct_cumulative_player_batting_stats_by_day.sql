@@ -15,7 +15,7 @@ select * from {{ ref('dim_2024_season_date_spine') }}
         sum(games) as games_played,
         sum(at_bats) as at_bats,
         SAFE_DIVIDE(sum(hits),sum(at_bats)) as batting_average,
-        SAFE_DIVIDE(sum(walks)+sum(hit_by_pitch)+sum(hits),sum(at_bats)) as on_base_percentage,
+        SAFE_DIVIDE(sum(walks)+sum(hit_by_pitch)+sum(hits),sum(at_bats)+sum(walks)+sum(hit_by_pitch)+sum(sacrifice_flys)+sum(sacrifice_hits)) as on_base_percentage,
         sum(runs) as runs,
         sum(hits) as hits,
         sum(total_bases) as total_bases,

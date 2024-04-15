@@ -45,49 +45,63 @@ resource "google_bigquery_dataset" "prod" {
 }
 
 resource "google_compute_instance" "agent-vm" {
-    name         = var.VM_NAME
-    machine_type = var.VM_MACHINE_TYPE
-    zone         = var.VM_ZONE
+  boot_disk {
+    auto_delete = true
+    device_name = var.VM_NAME
 
-    boot_disk {
-        initialize_params {
-            image = var.VM_MACHINE_IMAGE
-            size=20
-            type = "pd-balanced"
-        }
-
-        mode = "READ_WRITE"
+    initialize_params {
+      image = "projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20240307b"
+      size  = 30
+      type  = "pd-balanced"
     }
 
-    service_account {
-        email = "${var.SERVICE_ACCOUNT_NAME}@${var.PROJECT_ID}.iam.gserviceaccount.com"
-        scopes = [
-            "cloud-platform",
-        ]
+    mode = "READ_WRITE"
+  }
+
+  can_ip_forward      = false
+  deletion_protection = false
+  enable_display      = false
+
+  labels = {
+    goog-ec-src = "vm_add-tf"
+  }
+
+  machine_type = var.VM_MACHINE_TYPE
+  name         = var.VM_NAME
+
+  network_interface {
+    access_config {
+      network_tier = "PREMIUM"
     }
 
-    metadata = {
-        ssh-keys = "${var.VM_SSH_USER}:${file(var.SSH_PUB_KEY_FILE)}"
-    }
+    queue_count = 0
+    stack_type  = "IPV4_ONLY"
+    subnetwork  = "$projects/${var.PROJECT_ID}/regions/us-west1/subnetworks/default"
+  }
 
-    network_interface {
-        network = "default"
-        access_config {
-                network_tier = "PREMIUM"
-        }
-    }
+  scheduling {
+    automatic_restart   = true
+    on_host_maintenance = "MIGRATE"
+    preemptible         = false
+    provisioning_model  = "STANDARD"
+  }
 
-    scheduling {
-      automatic_restart   = true
-      on_host_maintenance = "MIGRATE"
-      preemptible         = false
-      provisioning_model  = "STANDARD"
-    }
+  service_account {
+    email  = "${var.SERVICE_ACCOUNT_NAME}@${var.PROJECT_ID}.iam.gserviceaccount.com"
+    scopes = ["https://www.googleapis.com/auth/devstorage.read_only", "https://www.googleapis.com/auth/logging.write", "https://www.googleapis.com/auth/monitoring.write", "https://www.googleapis.com/auth/service.management.readonly", "https://www.googleapis.com/auth/servicecontrol", "https://www.googleapis.com/auth/trace.append"]
+  }
 
-    shielded_instance_config {
-      enable_integrity_monitoring = true
-      enable_secure_boot          = false
-      enable_vtpm                 = true
-    }
+  metadata = {
+    ssh-keys = "${var.VM_SSH_USER}:${file(var.SSH_PUB_KEY_FILE)}"
+  }
+
+  shielded_instance_config {
+    enable_integrity_monitoring = true
+    enable_secure_boot          = false
+    enable_vtpm                 = true
+  }
+
+  zone = var.VM_ZONE
 }
+
 

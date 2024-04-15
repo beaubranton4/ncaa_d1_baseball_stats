@@ -148,3 +148,5 @@ Setup Instructions:
 8.0 Destroying Resources
 
 Either on your local machine or your VM, navigate to the parent directory of this project:
+    set -o allexport && source .env && set +o allexport
+    terraform -chdir=terraform init
