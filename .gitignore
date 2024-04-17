@@ -11,3 +11,4 @@ to_delete
 **google_credentials.json
 **logs/
 **.env
+mage_data/
