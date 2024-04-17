@@ -1,5 +1,7 @@
 version: 2
 
+## TO DO - Add field descriptions for each field in the models.
+
 models:
   - name: fct_cumulative_player_batting_stats_by_day
     description: >
@@ -13,3 +15,6 @@ models:
   - name: fct_game_stats
     description: >
       Aggregated table total stats for each game, including the winning team, losing team, and the final score.
+  - name: fct_team_wins_loss_records_by_day
+    description: >
+      Aggregated table of total wins and losses for each team. This table is used to calculate the winning percentage for each team at any given point of the season.
