@@ -47,11 +47,5 @@ def get_all_dates_in_season():
 
 @data_loader
 def load_from_google_cloud_storage(*args, **kwargs):
-   
-    dates_scraped = get_all_scraped_dates_in_gcs()
     all_dates = get_all_dates_in_season()
-    missing_dates = [date for date in all_dates if date not in dates_scraped]
-    if not missing_dates:
-        today = datetime.now().date()
-        missing_dates = [today-timedelta(days=2),today-timedelta(days=1)] #rescrape last 3 days games in case data is delayed/updated
-    return [missing_dates]
+    return [all_dates]

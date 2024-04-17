@@ -6,7 +6,7 @@ GCP_CREDENTIALS=credentials/gcp-credentials.json
 GCP_PROJECT_ID=ncaa-d1-baseball-stats-project
 GCP_PROJECT_NAME=ncaa-d1-baseball-stats-project
 GCP_REGION=us-west1
-GCP_ZONE=us-west1-a
+GCP_ZONE=us-west1-b
 GCP_SERVICE_ACCOUNT_NAME=ncaa-d1-baseball-stats-service
 
 #GCS

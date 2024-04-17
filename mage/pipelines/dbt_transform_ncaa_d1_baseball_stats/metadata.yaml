@@ -22,12 +22,12 @@ blocks:
   language: sql
   name: dbt/ncaa_d1_baseball_stats/models/stg/stg_all_batting_box_scores
   retry_config: null
-  status: failed
+  status: executed
   timeout: null
   type: dbt
   upstream_blocks: []
   uuid: dbt/ncaa_d1_baseball_stats/models/stg/stg_all_batting_box_scores
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration:
     dbt: {}
@@ -50,14 +50,14 @@ blocks:
   language: sql
   name: dim_2024_season_date_spine
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: dbt
   upstream_blocks:
   - dbt/ncaa_d1_baseball_stats/models/stg/stg_all_batting_box_scores
   - dbt/ncaa_d1_baseball_stats/models/stg/stg_all_batting_box_scores
   uuid: dbt/ncaa_d1_baseball_stats/models/stg/dim_2024_season_date_spine
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration:
     dbt: {}
@@ -71,7 +71,8 @@ blocks:
       project_path: dbt/ncaa_d1_baseball_stats
     limit: 1000
     use_raw_sql: false
-  downstream_blocks: []
+  downstream_blocks:
+  - dbt/ncaa_d1_baseball_stats/models/prod/fct_team_win_loss_records_by_day
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -84,7 +85,7 @@ blocks:
   upstream_blocks:
   - dbt/ncaa_d1_baseball_stats/models/stg/stg_all_batting_box_scores
   uuid: dbt/ncaa_d1_baseball_stats/models/prod/fct_game_stats
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration:
     dbt: {}
@@ -105,13 +106,14 @@ blocks:
   language: sql
   name: fct_cumulative_player_batting_stats_by_day
   retry_config: null
-  status: not_executed
+  status: executed
   timeout: null
   type: dbt
   upstream_blocks:
   - dbt/ncaa_d1_baseball_stats/models/stg/dim_2024_season_date_spine
+  - dbt/ncaa_d1_baseball_stats/models/prod/fct_team_win_loss_records_by_day
   uuid: dbt/ncaa_d1_baseball_stats/models/prod/fct_cumulative_player_batting_stats_by_day
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration:
     dbt: {}
@@ -132,12 +134,40 @@ blocks:
   language: sql
   name: fct_cumulative_team_batting_stats_by_day
   retry_config: null
-  status: failed
+  status: updated
   timeout: null
   type: dbt
   upstream_blocks:
   - dbt/ncaa_d1_baseball_stats/models/stg/dim_2024_season_date_spine
   uuid: dbt/ncaa_d1_baseball_stats/models/prod/fct_cumulative_team_batting_stats_by_day
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    dbt: {}
+    dbt_profile_target: prod
+    dbt_project_name: dbt/ncaa_d1_baseball_stats
+    disable_query_preprocessing: false
+    export_write_policy: append
+    file_path: dbt/ncaa_d1_baseball_stats/models/prod/fct_team_win_loss_records_by_day.sql
+    file_source:
+      path: dbt/ncaa_d1_baseball_stats/models/prod/fct_team_win_loss_records_by_day.sql
+      project_path: dbt/ncaa_d1_baseball_stats
+    limit: 1000
+    use_raw_sql: false
+  downstream_blocks:
+  - dbt/ncaa_d1_baseball_stats/models/prod/fct_cumulative_player_batting_stats_by_day
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: dbt/ncaa_d1_baseball_stats/models/prod/fct_team_win_loss_records_by_day
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks:
+  - dbt/ncaa_d1_baseball_stats/models/prod/fct_game_stats
+  uuid: dbt/ncaa_d1_baseball_stats/models/prod/fct_team_win_loss_records_by_day
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}

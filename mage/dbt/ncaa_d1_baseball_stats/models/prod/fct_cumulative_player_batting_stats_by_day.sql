@@ -1,6 +1,24 @@
+{{ config(
+    materialized='table',
+    partition_by={
+        "field": "date",    
+        "data_type": "date",      
+        "granularity": "day"       
+    },
+    cluster_by=["team"]  
+) }}
+
 with daily_batting_stats as(
     select *
     from {{ ref('stg_all_batting_box_scores') }}
+)
+
+, record_by_day as(
+    select 
+        date,
+        team,
+        total_wins+total_losses as team_games_played
+    from {{ ref('fct_team_win_loss_records_by_day') }}
 )
 
 , date_spine as (
@@ -51,6 +69,13 @@ select * from {{ ref('dim_2024_season_date_spine') }}
     from cumulative_stats
 )
 
-select * 
-    from final_w_rank
-        -- order by team, player, date
+select 
+    a.*,
+    b.team_games_played,
+    case
+        when a.at_bats/b.team_games_played > 2.7 then True
+        else False
+    end as stat_leader_minimum_at_bats --Player must have at least 2.7 AB's per team game played to qualify for stat leader considerations
+from final_w_rank a
+left join record_by_day b
+    on a.team = b.team

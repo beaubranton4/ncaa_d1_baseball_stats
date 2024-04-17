@@ -15,3 +15,5 @@ variable "VM_SSH_USER" {}
 variable "VM_ZONE" {}
 variable "SERVICE_ACCOUNT_NAME" {}
 variable "SSH_PUB_KEY_FILE" {}
+
+

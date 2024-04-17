@@ -1,6 +1,16 @@
+
+
 with daily_batting_stats as(
     select *
     from `ncaa-d1-baseball-stats-project`.`prod_ncaa_d1_baseball_stats`.`stg_all_batting_stats`
+)
+
+, record_by_day as(
+    select 
+        date,
+        team,
+        total_wins+total_losses as team_games_played
+    from `ncaa-d1-baseball-stats-project`.`prod_ncaa_d1_baseball_stats`.`fct_team_win_loss_records_by_day`
 )
 
 , date_spine as (
@@ -15,7 +25,7 @@ select * from `ncaa-d1-baseball-stats-project`.`prod_ncaa_d1_baseball_stats`.`di
         sum(games) as games_played,
         sum(at_bats) as at_bats,
         SAFE_DIVIDE(sum(hits),sum(at_bats)) as batting_average,
-        SAFE_DIVIDE(sum(walks)+sum(hit_by_pitch)+sum(hits),sum(at_bats)) as on_base_percentage,
+        SAFE_DIVIDE(sum(walks)+sum(hit_by_pitch)+sum(hits),sum(at_bats)+sum(walks)+sum(hit_by_pitch)+sum(sacrifice_flys)+sum(sacrifice_hits)) as on_base_percentage,
         sum(runs) as runs,
         sum(hits) as hits,
         sum(total_bases) as total_bases,
@@ -51,6 +61,13 @@ select * from `ncaa-d1-baseball-stats-project`.`prod_ncaa_d1_baseball_stats`.`di
     from cumulative_stats
 )
 
-select * 
-    from final_w_rank
-        -- order by team, player, date
+select 
+    a.*,
+    b.team_games_played,
+    case
+        when a.at_bats/b.team_games_played > 2.7 then True
+        else False
+    end as stat_leader_minimum_at_bats --Player must have at least 2.7 AB's per team game played to qualify for stat leader considerations
+from final_w_rank a
+left join record_by_day b
+    on a.team = b.team

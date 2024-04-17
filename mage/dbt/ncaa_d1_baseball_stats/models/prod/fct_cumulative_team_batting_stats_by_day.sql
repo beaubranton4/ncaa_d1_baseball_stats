@@ -1,3 +1,13 @@
+{{ config(
+    materialized='table',
+    partition_by={
+        "field": "date",    
+        "data_type": "date",      
+        "granularity": "day"       
+    },
+    cluster_by=["team"]  
+) }}
+
 with daily_batting_stats as(
     select *
     from {{ ref('stg_all_batting_box_scores') }}
@@ -52,7 +62,6 @@ select * from {{ ref('dim_2024_season_date_spine') }}
 
 select * 
     from final_w_rank
-        -- order by team, player, date
 
 
 

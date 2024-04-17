@@ -40,7 +40,12 @@ def get_all_dates_in_season():
     # end_date = datetime.strptime(end_date_str, "%m/%d/%Y").date() 
     
     #PROD - GET ALL DATES IN SEASON THAT ARE NOT SCRAPED YET AND LOADED TO GOOGLE CLOUD STORAGE
-    end_date = datetime.now().date()-timedelta(days=1)
+    todays_end_date = datetime.now().date()-timedelta(days=1)
+    
+    season_end_str = '06/24/2024'
+    season_end = datetime.strptime(season_end_str, "%m/%d/%Y").date()
+
+    end_date = min(todays_end_date,season_end)
 
     all_dates = [start_date + timedelta(days=i) for i in range((end_date - start_date).days + 1)]
     return all_dates

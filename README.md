@@ -110,7 +110,7 @@ Setup Instructions:
     Copy JSON file with Service Account Credentials from your local repository to the same location in the cloned project repo in the VM
         Should keep the name as gcp-credentials.json and move to the credentials folder
 
-4.1 INSTALLING ALL REQUIREMENTS FOR VM ENVIRONMENT
+<!-- 4.1 INSTALLING ALL REQUIREMENTS FOR VM ENVIRONMENT
     - Install Docker: 
         sudo apt-get update
         sudo apt-get install docker.io 
@@ -122,7 +122,7 @@ Setup Instructions:
         sudo service docker restart
         - to verify:
         sudo docker run hello-world
-        sudo docker-compose --version
+        sudo docker-compose --version -->
 
 
 5.0 RUNNING MAGE VIA DOCKER IMAGE 
@@ -131,9 +131,15 @@ Setup Instructions:
     - Enable Port Forwarding and connect to localhost:6789. You should see the UI for Mage. If you don't see anything ensure the Docker image is running on port 6789. You may have be having trouble with port forwarding if both are working properly.
 
 5.1 TRIGGERING MAGE PIPELINES
-    - There are two production pipelines in this Mage Project:
+
+    - I may just want to not have any triggers. Just tell the person to trigger them...
+    - There are three production pipelines in this Mage Project:
         scrape_ncaa_d1_baseball_stats: this pipeline scrapes data from all box scores from all d1 baseball games in the 2024 season that have not yet been scraped. THE FIRST TIME THIS PIPELINE RUNS WILL TAKE 2-4 HOURS (run the test pipeline if you don't have the time to wait)
         -ncaa_batting_gcs_to_big_query: this pipeline moves data from GCS storage bucket to BigQuery. It's set to run daily and also is triggered to run anytime "scrape_ncaa_d1_baseball_stats" or "test_scrape_ncaa_d1_baseball_stats" is run successfully
+        -dbt_transform_ncaa_d1_baseball_stats: this runs all dbt models. Takes data from stage, creates multiple data models via transformations and joins and creates three production tables. 
+        The two largest tables are partitioned and clustered and all outputs are stored in prod_ncaa_d1_baseball_stats
+
+I have built the pipeline so that every time the scraping pipeline has completed, the other two will run sequentially.
 
     - If you just want to test that everything is working i have created a test_pipeline script that only scrapes data from one day. Alternatively, you can run the "scrape_ncaa_d1_baseball_stats", leave the Docker image and VM running for a few hours and check back:
     - Click on the test pipeline "test_scrape_ncaa_d1_baseball_stats" and trigger it to "Run Once"
@@ -142,8 +148,21 @@ Setup Instructions:
         - If all dates have been scraped, it will rescrape the last two days worth of data in case there have been updates to box scores 
     - Pipeline triggers should already be active and should run every 6 hours. As long as you keep the VM the docker image on your VM running, these pipelines will run and you should receive stats from games that happen daily (until the end of the season of course 6/23/2024)
 
-6.0 Partitioning and Data Warehouse Optimization
-7.0 Build Dashboard
+6.0 DBT Transformations
+
+- Orchestrated via mage
+
+7.0 Dashboard
+
+Create a Looker Instance: https://console.cloud.google.com/looker/instances?referrer=search&authuser=0&walkthrough_id=looker-studio--looker-studio-onboarding&project=ncaa-d1-baseball-stats-project
+
+You must first create OAuth 2.0 Authorization Credentials by following the steps here: https://developers.google.com/identity/protocols/oauth2/web-server#creatingcred
+
+- Enable the Looker API
+
+The data visualization portion of this project was built in Tableau. Here are instructions on how to download Tableau, connect it to Big Query and how to replicate the same visualizations that I have created. Unfortunately, this is the one part of the project that I was not able to "automate"
+
+Include link here.
 
 8.0 Destroying Resources
 

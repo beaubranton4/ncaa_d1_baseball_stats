@@ -4,12 +4,14 @@
 
     create or replace table `ncaa-d1-baseball-stats-project`.`prod_ncaa_d1_baseball_stats`.`fct_cumulative_team_batting_stats_by_day`
       
-    
-    
+    partition by date
+    cluster by team
 
     OPTIONS()
     as (
-      with daily_batting_stats as(
+      
+
+with daily_batting_stats as(
     select *
     from `ncaa-d1-baseball-stats-project`.`prod_ncaa_d1_baseball_stats`.`stg_all_batting_stats`
 )
@@ -25,7 +27,7 @@ select * from `ncaa-d1-baseball-stats-project`.`prod_ncaa_d1_baseball_stats`.`di
         sum(games) as games_played,
         sum(at_bats) as at_bats,
         SAFE_DIVIDE(sum(hits),sum(at_bats)) as batting_average,
-        SAFE_DIVIDE(sum(walks)+sum(hit_by_pitch)+sum(hits),sum(at_bats)) as on_base_percentage,
+        SAFE_DIVIDE(sum(walks)+sum(hit_by_pitch)+sum(hits),sum(at_bats)+sum(walks)+sum(hit_by_pitch)+sum(sacrifice_flys)+sum(sacrifice_hits)) as on_base_percentage,
         sum(runs) as runs,
         sum(hits) as hits,
         sum(total_bases) as total_bases,
@@ -63,6 +65,5 @@ select * from `ncaa-d1-baseball-stats-project`.`prod_ncaa_d1_baseball_stats`.`di
 
 select * 
     from final_w_rank
-        -- order by team, player, date
     );
   

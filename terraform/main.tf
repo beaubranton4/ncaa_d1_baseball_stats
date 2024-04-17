@@ -93,6 +93,33 @@ resource "google_compute_instance" "agent-vm" {
 
   metadata = {
     ssh-keys = "${var.VM_SSH_USER}:${file(var.SSH_PUB_KEY_FILE)}"
+    startup-script = <<-EOS
+      #!/bin/bash
+      # Update and install prerequisites
+      sudo apt-get update
+      sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+
+      # Add Docker's official GPG key
+      curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+      # Add Docker's repository
+      sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+      # Install Docker CE
+      sudo apt-get update
+      sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+
+      # Install Docker Compose
+      sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+      sudo chmod +x /usr/local/bin/docker-compose
+
+      # Manage Docker as a non-root user (Specify the actual username instead of $USER)
+      sudo usermod -aG docker [username]
+
+      # Enable and restart Docker service
+      sudo systemctl enable docker
+      sudo systemctl restart docker
+    EOS
   }
 
   shielded_instance_config {
