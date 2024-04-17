@@ -106,7 +106,7 @@ blocks:
   language: sql
   name: fct_cumulative_player_batting_stats_by_day
   retry_config: null
-  status: executed
+  status: updated
   timeout: null
   type: dbt
   upstream_blocks:

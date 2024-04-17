@@ -8,15 +8,39 @@ Setup Instructions:
 
 0.0 DOWNLOAD PROJECT REPOSITORY
 
+On your local machine run the following commands from terminal. Naviagate to the directory you want this project to be installed and run the following:
 
-1.0 GOOGLE CLOUD SETUP (Consider using CLI if that makes it easier)
+git clone https://github.com/beaubranton4/ncaa_d1_baseball_stats.git
+cd ncaa_d1_baseball_stats
+Rename env_template to .env
 
-- Setup a Google Cloud Account
+1.0 GOOGLE CLOUD SETUP 
+1.1 Install Google SDK: Google SDK: Download from here: https://cloud.google.com/sdk/docs/downloads-interactive#linux-mac (Don't do the gcloud init step)
+
+1.2 You can setup a Google Cloud from your terminal with the following commands:
+
+Create the GCP Project named ncaa-d1-baseball-stats-project: by executing the below from the this project's folder in the terminal. GCP Documentation
+
+    # Follow instructions to setup your project and do the initial project setup
+    gcloud init --no-browser --skip-diagnostics
+    # Select Option 2 - Create a new configuration
+    # Enter configuration name (enter the project name here): ncaa-d1-baseball-stats-project
+    # Choose the account you would like to use to perform operations for this configuration: 1 (your gmail account)
+    # Pick cloud project to use: (Create new project)
+    # Please enter project id: ncaa-d1-baseball-stats-project
+
+    # To check that all is configured correctly and that your CLI is configured to use your created project use the command
+    gcloud info
+
+    WARNING: Double check that you have typed the project name and id exactly as shown: "ncaa-d1-baseball-stats-project". This name much match the environment variables provided (or must be changed to match the name/id that you chose)
+
+
+<!-- - Setup a Google Cloud Account
 - Enable Billing
 - Create a New Project on GCP and Give it a Name and ID (You do not have to create or select an organization)
     - Suggested Name:
     - Suggested ID:
-    - You can choose any ID and name that you want, but you will need to update certain variables with the ID and name that you chose for your Google Cloud Project. If you use the Suggested Name and Suggested ID, these variables will default to what was suggested.
+    - You can choose any ID and name that you want, but you will need to update certain variables with the ID and name that you chose for your Google Cloud Project. If you use the Suggested Name and Suggested ID, these variables will default to what was suggested. -->
 
 1.1 CREATE SERVICE ACCOUNT AND SAVE JSON FILE:
 - Create a Service Account and Generate a JSON Key to access and manage the project with Terraform
@@ -160,9 +184,10 @@ You must first create OAuth 2.0 Authorization Credentials by following the steps
 
 - Enable the Looker API
 
-The data visualization portion of this project was built in Tableau. Here are instructions on how to download Tableau, connect it to Big Query and how to replicate the same visualizations that I have created. Unfortunately, this is the one part of the project that I was not able to "automate"
+The data visualization portion of this project was built in Looker. Here are instructions on how to start using Looker, connect it to Big Query and replicate the same visualizations that I have created. Unfortunately, this is the one part of the project that I was not able to "automate" and would not advise trying to rebuild my dashboard unless you have the time!
 
-Include link here.
+Link to Looker Dashboard: https://lookerstudio.google.com/s/nWiTVPz6SUw
+Link to Embed: <iframe width="600" height="450" src="https://lookerstudio.google.com/embed/reporting/a4fcf765-aa8c-4337-bdbe-6a165cbb5266/page/p_z3bay2lggd" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
 
 8.0 Destroying Resources
 

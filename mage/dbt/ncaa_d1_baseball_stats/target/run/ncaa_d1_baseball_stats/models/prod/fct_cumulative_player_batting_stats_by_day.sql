@@ -82,5 +82,6 @@ select
 from final_w_rank a
 left join record_by_day b
     on a.team = b.team
+    and a.date = b.date
     );
   
