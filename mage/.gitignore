@@ -12,3 +12,12 @@ logs/
 mage-ai.db
 mage_data/
 secrets/
+utils/
+sensors/
+scratchpads/
+interactions/
+extensions/
+dbts/
+charts/
+.file_versions/
+.__pycache__/
