@@ -123,7 +123,7 @@ A Make file is provided for you to execute the below commands and finalize setup
 - Voila! Your Data Lake, Data Warehouse and VM have been created.
 
 
-3.0 VM SETUP (OPTIONAL - If you want these pipelines to run on the cloud, this section must be completed. If you just want to run these pipelines locally, you can skip this section)
+3.0 VM SETUP (If you want these pipelines to run on the cloud, this section must be completed. If you just want to run these pipelines locally, you can skip sections 3 and 4 and just run docker from your local machine)
 
     Run the VM:
         gcloud compute instances start $GCP_VM_NAME --zone $GCP_ZONE --project $GCP_PROJECT_ID
@@ -162,25 +162,36 @@ A Make file is provided for you to execute the below commands and finalize setup
 
 ###LEFT OFF HERE!!!!!!!!!!!!!!!!
 
-    - I may just want to not have any triggers. Just tell the person to trigger them...
-    - There are three production pipelines in this Mage Project:
-        scrape_ncaa_d1_baseball_stats: this pipeline scrapes data from all box scores from all d1 baseball games in the 2024 season that have not yet been scraped. THE FIRST TIME THIS PIPELINE RUNS WILL TAKE 2-4 HOURS (run the test pipeline if you don't have the time to wait)
-        -ncaa_batting_gcs_to_big_query: this pipeline moves data from GCS storage bucket to BigQuery. It's set to run daily and also is triggered to run anytime "scrape_ncaa_d1_baseball_stats" or "test_scrape_ncaa_d1_baseball_stats" is run successfully
-        -dbt_transform_ncaa_d1_baseball_stats: this runs all dbt models. Takes data from stage, creates multiple data models via transformations and joins and creates three production tables. 
-        The two largest tables are partitioned and clustered and all outputs are stored in prod_ncaa_d1_baseball_stats
+- In the mage UI, click Pipelines in the left hand menu. You will see 4 pipelines:
+    - test_scrape_ncaa_d1_baseball_stats
+    - scrape_ncaa_d1_baseball_stats
+    - ncaa_batting_gcs_to_big_query
+    - dbt_transform_ncaa_d1_baseball
 
-I have built the pipeline so that every time the scraping pipeline has completed, the other two will run sequentially.
+- Depending, on how much time you have, I have built two nearly identical sets of pipelines. The only difference is that one will scrape baseball stats from a single day, write to GCS, transfer and store in BQ and perform dbt transformations. The other will do this for the entire season up to the date that you run the pipeline. As of writing we are nearly 60 days into the season and the full pipeline takes about 2 hours to run.
+    - Option 1 (5 min to complete): 
+        - Click the test_scrape_ncaa_d1_baseball_stats pipeline
+        - Click Run@once 
+        - Click Run Now
+    - Option 2 (2-3 hours to complete): 
+        - Click the scrape_ncaa_d1_baseball_stats pipeline
+        - Click Run@once 
+        - Click Run Now
 
-    - If you just want to test that everything is working i have created a test_pipeline script that only scrapes data from one day. Alternatively, you can run the "scrape_ncaa_d1_baseball_stats", leave the Docker image and VM running for a few hours and check back:
-    - Click on the test pipeline "test_scrape_ncaa_d1_baseball_stats" and trigger it to "Run Once"
-    - Run the first pipeline (the very first run may take up to 3 hours as data is scraped for every day since the beginning of the 2024 season 2/16/2024)
-        - The script is built so that it will check what dates have already been scraped (in GCS) and only scrape remaining
-        - If all dates have been scraped, it will rescrape the last two days worth of data in case there have been updates to box scores 
-    - Pipeline triggers should already be active and should run every 6 hours. As long as you keep the VM the docker image on your VM running, these pipelines will run and you should receive stats from games that happen daily (until the end of the season of course 6/23/2024)
+Whichever option you choose will run the pipeline that scrapes the data from the NCAA stats website. Once completed it will trigger ncaa_batting_gcs_to_big_query and dbt_transform_ncaa_d1_baseball.
 
-6.0 DBT Transformations
+More magic! You now have all the data you need in both Google Cloud Storage and in BigQuery:
 
-- Orchestrated via mage
+You should see:
+
+    In Google Cloud Storage:
+        - A bucket created with the bucket name you defined in your .env file
+        - Folders for each date scraped by your pipeline runs thus far each containing a parquet file with raw data with stats from games on that date
+
+    In Big Query:
+
+If you want to keep this entire pipeline up and running, you can create a new scheduled trigger on scrape_ncaa_d1_baseball_stats pipeline.  This will run the entire end-to-end pipeline for as long as you keep the docker image and your virtual machine running (but be aware that this will cost a few dollars a day)
+
 
 7.0 Dashboard
 
@@ -200,3 +211,9 @@ Link to Embed: <iframe width="600" height="450" src="https://lookerstudio.google
 Either on your local machine or your VM, navigate to the parent directory of this project:
     set -o allexport && source .env && set +o allexport
     terraform -chdir=terraform init
+
+
+Future Enhancements:
+
+- Provide detailed documentation of all tables with fields, types and descriptions of each
+- I had also written 80% of a script to scrape data from college rosters. I hope to upload this as seed data to enable filtering in the dashboard by hometown, grade and other player attributes
