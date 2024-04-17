@@ -30,7 +30,8 @@ Create the GCP Project named ncaa-d1-baseball-stats-project: by executing the be
     # Please enter project id: ncaa-d1-baseball-stats-project
 
     # To check that all is configured correctly and that your CLI is configured to use your created project use the command
-    gcloud info
+    gcloud config get-value project
+
 
     WARNING: Double check that you have typed the project name and id exactly as shown: "ncaa-d1-baseball-stats-project". This name much match the environment variables provided (or must be changed to match the name/id that you chose)
 
@@ -44,7 +45,9 @@ Create the GCP Project named ncaa-d1-baseball-stats-project: by executing the be
 
 1.3 UPDATE .ENV or variables.tf
 - This is just a reminder to rename env_template to .env if you haven't already
-- All the environment variables should be set for you, but if you deviated from the project names/id's and or instructions provided, you will want to update the .env and variables.tf files accordingly. You also have the option of updating the region and zone variables in the .env file to one that matches where you live.
+- You must set the GCS_BUCKET_NAME variable. All bucket names across all of GCS are unique. Adding a few numbers to the end should work.
+- You also have the option of updating the region and zone variables in the .env file to one that matches where you live.
+- All the other environment variables should be set for you, but if you deviated from the project names/id's and or instructions provided, you will want to update the .env and variables.tf files accordingly. 
 
 1.4 CREATE SERVICE ACCOUNT & SAVE CREDENTIALS, ENABLE API'S AND SETUP ACCESS VIA IAM ROLES:
 
@@ -127,6 +130,12 @@ A Make file is provided for you to execute the below commands and finalize setup
         This can also be done via GCP
 
     If you created a config file in you ~/.ssh folder you can update the IP Address there and remote ssh into the VM
+
+    Host ncaa-d1-baseball-stats
+    Hostname 34.168.166.185
+    User project_user
+    IdentityFile ~/.ssh/ncaa_d1_baseball_stats
+
     
     Get the External IP:
         ssh -i ~/.ssh/ncaa_d1_baseball_stats $GCP_VM_SSH_USER@[REPLACE_WITH_EXTERNAL_IP_OF_VM]
@@ -135,8 +144,7 @@ A Make file is provided for you to execute the below commands and finalize setup
 4.0 Clone the Project repo on the VM
         git clone https://github.com/beaubranton4/ncaa_d1_baseball_stats.git
         cd ncaa_d1_baseball_stats
-    Rename env_template
-        mv env_template .env
+    Copy the .env file from your local machine to the parent folder of this project in the VM
     Copy JSON file with Service Account Credentials from your local repository to the same location in the cloned project repo in the VM
         Should keep the name as gcp-credentials.json and move to the credentials folder
 
@@ -151,6 +159,8 @@ A Make file is provided for you to execute the below commands and finalize setup
     - Enable Port Forwarding and connect to localhost:6789. You should see the UI for Mage. If you don't see anything ensure the Docker image is running on port 6789. You may have be having trouble with port forwarding if both are working properly.
 
 5.1 TRIGGERING MAGE PIPELINES
+
+###LEFT OFF HERE!!!!!!!!!!!!!!!!
 
     - I may just want to not have any triggers. Just tell the person to trigger them...
     - There are three production pipelines in this Mage Project:
