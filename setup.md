@@ -318,7 +318,17 @@ To keep the pipeline running regularly, set up a scheduled Mage trigger for `scr
 
   
 
-You can create your own dashboard and connect it to your production data now available in BigQuery. This part of the project cannot be setup for you via code. Here is the [link](https://lookerstudio.google.com/s/nWiTVPz6SUw) to the dashboard for you to view as well as screenshots of the final project:
+You can create your own dashboard and connect it to your production data now available in BigQuery. This part of the project cannot be setup for you via code. 
+
+
+Below are resources for you to learn more if interested in building your own dashboard.
+
+- [Looker Instance Setup](https://console.cloud.google.com/looker/instances?referrer=search&authuser=0&walkthrough_id=looker-studio--looker-studio-onboarding&project=ncaa-d1-baseball-stats-project)
+
+- [Embedding Looker Dashboards](https://lookerstudio.google.com/s/nWiTVPz6SUw)
+
+
+Here is the [link](https://lookerstudio.google.com/s/nWiTVPz6SUw) to the dashboard I built as well as screenshots of the final output:
 
   
 ![Page 3](images/dashboard_image_1.png)
@@ -329,21 +339,9 @@ You can create your own dashboard and connect it to your production data now ava
 
 ![Page 6](images/dashboard_image_4.png)
   
-And that's all!
 
-Below are resources for you to learn more if interested in building your own dashboard.
-
-- [Looker Instance Setup](https://console.cloud.google.com/looker/instances?referrer=search&authuser=0&walkthrough_id=looker-studio--looker-studio-onboarding&project=ncaa-d1-baseball-stats-project)
-
-- [Embedding Looker Dashboards](https://lookerstudio.google.com/s/nWiTVPz6SUw)
-
-  
-
-  
 
 ## 9. Destroy Resources
-
-  
 
   
 
