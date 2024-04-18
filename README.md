@@ -1,219 +1,109 @@
-# ncaa_d1_baseball_stats
+
+# NCAA D1 Baseball Stats - Data Engineering Zoomcamp Final Project
+
+## **Overview**
+
 An end to end data pipeline that scrapes, stores, transforms and visualizes stats from all NCAA D1 Baseball Games. This project was created to demonstrate concepts learned in the 2024 Data Engineering Zoomcamp hosted by the Data Talks Club as well as a fun personal project for me to build a database and frontend that I wish had previously existed.
 
+ As a former college baseball player, I am an avid fan of college baseball. I like following my alma mater, staying up to date on players from where I grew up, and tracking the up and coming stars in the game who will undoubtedly play professionally one day. Although the NCAA does a great job of gathering this data - there isn't a great central repository for visualizing college baseball stats that is easily searchable and filterable. I felt that I could take steps towards creating a solution to this problem through this project - and maybe uncover some interesting insights while I'm at it. And last, but certainly not least, learn about Data Engineering!
 
+If all you care about is reproducing this project on your own, you can follow this **link**.
 
-Setup Instructions:
+If you just want to see the final dashboard you can click [here](https://lookerstudio.google.com/s/nWiTVPz6SUw).
 
+  ## **Objective**
 
-0.0 DOWNLOAD PROJECT REPOSITORY
+Use [concepts learned in the course](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/README.md) to build an end-to-end data pipeline that will result in a dashboard to visualize stats and uncover insights from the NCAA D1 Baseball season. The project will include the following:
 
-On your local machine run the following commands from terminal. Naviagate to the directory you want this project to be installed and run the following:
+-   Selecting a dataset of interest (I chose to gather my data via webscraping)
+-   Creating a pipeline for processing this dataset and putting it to a datalake
+-   Creating a pipeline for moving the data from the lake to a data warehouse
+-   Transforming the data in the data warehouse: prepare it for the dashboard
+-   Building a dashboard to visualize the data
 
-git clone https://github.com/beaubranton4/ncaa_d1_baseball_stats.git
-cd ncaa_d1_baseball_stats
-Rename env_template to .env
+You can view full project criteria [here](https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/projects).
+  
+  ## **Technologies Used**
+  
 
-1.0 GOOGLE CLOUD SETUP 
-1.1 Install Google SDK: Google SDK: Download from here: https://cloud.google.com/sdk/docs/downloads-interactive#linux-mac (Don't do the gcloud init step)
+ - Google Cloud Platform:
+	 - Google Cloud Storage (as our Data Lake)
+ 	 - Big Query (as our Data Warehouse)
+	 - Compute Engine - Virtual Machine (to run our data pipelines in the Cloud)
+ - Terraform (IaC to Create our Google Cloud Platform)
+ - Docker (to run Mage, our data orchestrator, in a reproducible manner)
+ - Mage (our data orchestrator to organize and schedule pipelines and dbt)
+ - dbt (for data transformations in our Data Warehouse)
+ - Google Data Studio - Looker (to visualize our data)
 
-1.2 You can setup a Google Cloud from your terminal with the following commands:
-
-Create the GCP Project named ncaa-d1-baseball-stats-project: by executing the below from the this project's folder in the terminal. GCP Documentation
-
-    # Follow instructions to setup your project and do the initial project setup
-    gcloud init --no-browser --skip-diagnostics
-    # Select Option 2 - Create a new configuration
-    # Enter configuration name (enter the project name here): ncaa-d1-baseball-stats-project
-    # Choose the account you would like to use to perform operations for this configuration: 1 (your gmail account)
-    # Pick cloud project to use: (Create new project)
-    # Please enter project id: ncaa-d1-baseball-stats-project
-
-    # To check that all is configured correctly and that your CLI is configured to use your created project use the command
-    gcloud config get-value project
-
-
-    WARNING: Double check that you have typed the project name and id exactly as shown: "ncaa-d1-baseball-stats-project". This name much match the environment variables provided (or must be changed to match the name/id that you chose)
-
-
-<!-- - Setup a Google Cloud Account
-- Enable Billing
-- Create a New Project on GCP and Give it a Name and ID (You do not have to create or select an organization)
-    - Suggested Name:
-    - Suggested ID:
-    - You can choose any ID and name that you want, but you will need to update certain variables with the ID and name that you chose for your Google Cloud Project. If you use the Suggested Name and Suggested ID, these variables will default to what was suggested. -->
-
-1.3 UPDATE .ENV or variables.tf
-- This is just a reminder to rename env_template to .env if you haven't already
-- You must set the GCS_BUCKET_NAME variable. All bucket names across all of GCS are unique. Adding a few numbers to the end should work.
-- You also have the option of updating the region and zone variables in the .env file to one that matches where you live.
-- All the other environment variables should be set for you, but if you deviated from the project names/id's and or instructions provided, you will want to update the .env and variables.tf files accordingly. 
-
-1.4 CREATE SERVICE ACCOUNT & SAVE CREDENTIALS, ENABLE API'S AND SETUP ACCESS VIA IAM ROLES:
-
-First, you will need to install Make on your local machine if you do not already have it.
-
-A Make file is provided for you to execute the below commands and finalize setup. NOTE: This command will take time to execute
-
-    cd ~/ncaa_d1_baseball_stats
-
-    # set the environment variables from the .env file
-    set -o allexport && source .env && set +o allexport
-    make gcp-set-all
-
-<!-- - Create a Service Account and Generate a JSON Key to access and manage the project with Terraform
-    - 
-    - https://console.cloud.google.com/iam-admin/serviceaccounts
-    - Suggested Service Account Name: ncaa_d1_baseball_stats_service (Can use makefile)
-    - Suggested Service Account ID: ncaa_d1_baseball_stats_service (Can use makefile)
-    - Grant proper permissions to Service Account
-        - Owner: This should give access to most everything but just in case...
-        - Specific Roles for Terraform (IaC) Setup:
-            - BigQuery Admin
-            - Storage Admin
-            - Storage Object Admin
-        - Specific Roles for Mage (Cloud Orchestrator):
-            - Artifact Registry Reader
-            - Artifact Registry Writer
-            - Cloud Run Developer
-            - Cloud SQL Admin
-            - Service Account Token Creator
-        - Specific Roles for dbt (Transformations) - these are redundant roles:
-            - BigQuery Admin
-            - Storage Admin
-            - Storage Object Admin
-        - In a real world scenario this may require 3 seperate service accounts, but for 
-        setup you can just create a single service account with all of the following 
-        roles.
-    - Create the Service Account
-    - Click on the Service Account and Select "Keys". Hit the "Add Key" button, select "Create Key", select the "JSON" button and create. This will save the JSON Key to your computer. 
-    - Rename the json file gcp-credentials.json and move it to the credentials folder in this project repository on your machine (If stored elsewhere you will need to update the file path variable in the .env file accordingly) -->
-
-<!-- 1.2 ENABLE APIS
-    - Next, we are required to enable Specific Google APIs (click following links and hit enable):
-        - BigQuery API: https://console.developers.google.com/apis/api/bigquery.googleapis.com
-        - Compute Engine API: https://console.cloud.google.com/marketplace/product/google/compute.googleapis.com -->
-
-1.5 GENERATE SSH KEYS (FOR VM):
-
-    Run the following:
-    
-    cd ~/.ssh
-    ssh-keygen -t rsa -f ~/.ssh/ncaa_d1_baseball_stats -C project_user -b 2048
-    
-    You have the option of creating a config file in this directory to make connecting to the VM easy and enable port forwarding via VS Code Extension - 
-    https://youtu.be/ae-CV2KfoN0?list=PL3MmuxUbc_hJed7dXYoJw8DoCuVHhGEQb&t=1073 
-    you can watch this video starting at 17:53 to see how to do this
+Here is how all the technologies come together in an architecture diagram:
 
 
 
-2.0 TERRAFORM SETUP 
-- Install Terraform
-- From terminal, navigate to the parent directory of this project:
-    
-    set -o allexport && source .env && set +o allexport
-    terraform -chdir=terraform init
-    terraform -chdir=terraform plan
-    terraform -chdir=terraform apply
+  ## **Dataset**
 
-    - run: terraform apply
-    - type: yes
-    - hit enter
+For this project I decided to write a webscraping script that pulls data from the [official stats website of the NCAA](https://stats.ncaa.org/). I chose this as my dataset because:
 
-- Voila! Your Data Lake, Data Warehouse and VM have been created.
+1. I love college baseball
+2. These statistics aren't readily available via API or free download anywhere
+3. I thought it would be fun to learn web scraping
 
 
-3.0 VM SETUP (If you want these pipelines to run on the cloud, this section must be completed. If you just want to run these pipelines locally, you can skip sections 3 and 4 and just run docker from your local machine)
+## **Terraform - Infrastructure as Code (IAC)**
 
-    Run the VM:
-        gcloud compute instances start $GCP_VM_NAME --zone $GCP_ZONE --project $GCP_PROJECT_ID
-        This can also be done via GCP
+You will find all the necessary IaC code in the [Terraform](https://github.com/beaubranton4/ncaa_d1_baseball_stats/tree/main/terraform) folder of this project.
 
-    If you created a config file in you ~/.ssh folder you can update the IP Address there and remote ssh into the VM
+Terraform is used to setup our Google Cloud resources in a reproducible way. The terraform files provided in this project will automatically create:
 
-    Host ncaa-d1-baseball-stats
-    Hostname 34.168.166.185
-    User project_user
-    IdentityFile ~/.ssh/ncaa_d1_baseball_stats
+ - A Data Lake in Google Cloud Storage
+ - 3 Datasets in BigQuery (stg, dev, and prod)
+ - A Compute Engine (Virtual Machine)
 
-    
-    Get the External IP:
-        ssh -i ~/.ssh/ncaa_d1_baseball_stats $GCP_VM_SSH_USER@[REPLACE_WITH_EXTERNAL_IP_OF_VM]
-        
+These can easily be built up or torn down using terraform apply and destroy commands.
 
-4.0 Clone the Project repo on the VM
-        git clone https://github.com/beaubranton4/ncaa_d1_baseball_stats.git
-        cd ncaa_d1_baseball_stats
-    Copy the .env file from your local machine to the parent folder of this project in the VM
-    Copy JSON file with Service Account Credentials from your local repository to the same location in the cloned project repo in the VM
-        Should keep the name as gcp-credentials.json and move to the credentials folder
+## **Docker - Containerization**
 
+You can find the [DockerFile](https://github.com/beaubranton4/ncaa_d1_baseball_stats/blob/main/Dockerfile) and the [docker-compose.yaml](https://github.com/beaubranton4/ncaa_d1_baseball_stats/blob/main/docker-compose.yml) file in the parent folder of this project.
 
-5.0 RUNNING MAGE VIA DOCKER IMAGE 
-    cd ~/ncaa_d1_baseball_stats
-    Docker and docker compose should have been installed via Terraform, if it hasn't you can find instructions in this video:
+Docker is used in this project to run an instance of Mage on your machine with the correct dependencies installed to run this data pipeline.
 
-    To run Mage via Docker:
+## **Mage - Data Orchestration**
 
-    - sudo docker-compose up
-    - Enable Port Forwarding and connect to localhost:6789. You should see the UI for Mage. If you don't see anything ensure the Docker image is running on port 6789. You may have be having trouble with port forwarding if both are working properly.
+The [mage](https://github.com/beaubranton4/ncaa_d1_baseball_stats/tree/main/mage) folder in this contain all the python and sql code that make up this data pipeline.
 
-5.1 TRIGGERING MAGE PIPELINES
+There are 3 pipelines that come together to create the overall data pipeline. Each pipeline is built from different blocks (pieces of code) that can be grouped into: data loaders, transformers, data exporters, and custom. The scripts in the mage folder are organized into these groups.
 
-###LEFT OFF HERE!!!!!!!!!!!!!!!!
+Pipeline 1: scrape_ncaa_d1_baseball_stats
 
-- In the mage UI, click Pipelines in the left hand menu. You will see 4 pipelines:
-    - test_scrape_ncaa_d1_baseball_stats
-    - scrape_ncaa_d1_baseball_stats
-    - ncaa_batting_gcs_to_big_query
-    - dbt_transform_ncaa_d1_baseball
+This pipeline scrapes the data from the NCAA stats website, applies basic transformations and stores the data as parquet files in a partitioned fashion.
 
-- Depending, on how much time you have, I have built two nearly identical sets of pipelines. The only difference is that one will scrape baseball stats from a single day, write to GCS, transfer and store in BQ and perform dbt transformations. The other will do this for the entire season up to the date that you run the pipeline. As of writing we are nearly 60 days into the season and the full pipeline takes about 2 hours to run.
-    - Option 1 (5 min to complete): 
-        - Click the test_scrape_ncaa_d1_baseball_stats pipeline
-        - Click Run@once 
-        - Click Run Now
-    - Option 2 (2-3 hours to complete): 
-        - Click the scrape_ncaa_d1_baseball_stats pipeline
-        - Click Run@once 
-        - Click Run Now
+Pipeline 2: ncaa_batting_gcs_to_big_query
 
-Whichever option you choose will run the pipeline that scrapes the data from the NCAA stats website. Once completed it will trigger ncaa_batting_gcs_to_big_query and dbt_transform_ncaa_d1_baseball.
+This pipeline further transforms, cleans and filters the data and combines it into a single dataset that is stored in our datawarehouse, BigQuery
 
-More magic! You now have all the data you need in both Google Cloud Storage and in BigQuery:
+Pipeline 3: dbt_transform_ncaa_d1_baseball_stats
 
-You should see:
+The final pipeline is created from a dbt (data build tool) project using Mage's inbuilt dbt capabilities. The entire dbt project lives within the mage folder [here](https://github.com/beaubranton4/ncaa_d1_baseball_stats/tree/main/mage/dbt/ncaa_d1_baseball_stats). 
 
-    In Google Cloud Storage:
-        - A bucket created with the bucket name you defined in your .env file
-        - Folders for each date scraped by your pipeline runs thus far each containing a parquet file with raw data with stats from games on that date
+This "pipeline" which essentially replicates a dbt cloud run when triggered, creates 5 production models from the single staged dataset.
 
-    In Big Query:
+## **Google Data Studio (Looker) - Dashboard**
 
-If you want to keep this entire pipeline up and running, you can create a new scheduled trigger on scrape_ncaa_d1_baseball_stats pipeline.  This will run the entire end-to-end pipeline for as long as you keep the docker image and your virtual machine running (but be aware that this will cost a few dollars a day)
+The final dashboard is created in Google Data Studio and can be found [here](https://lookerstudio.google.com/s/nWiTVPz6SUw).
+
+[INSERT IMAGE HERE]
 
 
-7.0 Dashboard
-
-Create a Looker Instance: https://console.cloud.google.com/looker/instances?referrer=search&authuser=0&walkthrough_id=looker-studio--looker-studio-onboarding&project=ncaa-d1-baseball-stats-project
-
-You must first create OAuth 2.0 Authorization Credentials by following the steps here: https://developers.google.com/identity/protocols/oauth2/web-server#creatingcred
-
-- Enable the Looker API
-
-The data visualization portion of this project was built in Looker. Here are instructions on how to start using Looker, connect it to Big Query and replicate the same visualizations that I have created. Unfortunately, this is the one part of the project that I was not able to "automate" and would not advise trying to rebuild my dashboard unless you have the time!
-
-Link to Looker Dashboard: https://lookerstudio.google.com/s/nWiTVPz6SUw
-Link to Embed: <iframe width="600" height="450" src="https://lookerstudio.google.com/embed/reporting/a4fcf765-aa8c-4337-bdbe-6a165cbb5266/page/p_z3bay2lggd" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
-
-8.0 Destroying Resources
-
-Either on your local machine or your VM, navigate to the parent directory of this project:
-    set -o allexport && source .env && set +o allexport
-    terraform -chdir=terraform init
 
 
-Future Enhancements:
 
-- Provide detailed documentation of all tables with fields, types and descriptions of each
+## **Future Enhancements**
+
+  
+
+- Provide detailed documentation of all tables with fields, types and descriptions of each.
+- There is an issue with some of the raw data. I found a few players who's names are listed differently across different games. Since i don't have an ID to join on, this looks like two different players in my dataset when it is really a single player. I would like to fix this.
 - I had also written 80% of a script to scrape data from college rosters. I hope to upload this as seed data to enable filtering in the dashboard by hometown, grade and other player attributes
+- In mage, I have built 3 pipelines in a way that the completion of 1 will trigger the other two sequentially. The issue is that my 1st pipeline uses dynamic blocks. So if 10 dynamic blocks are created my pipeline will trigger the downstream pipelines 10 times which is extremely redundant
+- There was an issue with one variable that I had to hard code throughout my project for the dev dataset in BigQuery. Couldn't figure that one out and hope to fix one day.
+- I use dbt daily at my job, and know that tests are pivotal to building a scalable data solution. To save time, i did not implement any tests in dbt or mage, but would like to if time permitting.
