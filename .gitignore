@@ -12,3 +12,4 @@ to_delete
 **logs/
 **.env
 mage_data/
+dbt_packages/
