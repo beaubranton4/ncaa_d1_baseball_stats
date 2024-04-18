@@ -5,6 +5,10 @@
 
 An end to end data pipeline that scrapes, stores, transforms and visualizes stats from all NCAA D1 Baseball Games. This project was created to demonstrate concepts learned in the 2024 Data Engineering Zoomcamp hosted by the Data Talks Club as well as a fun personal project for me to build a database and frontend that I wish had previously existed.
 
+Big thank you to the Data Talks Club for dedicating their time to putting this course together and helping people learn Data Engineering for free.
+
+## **Problem Statement**
+  
  As a former college baseball player, I am an avid fan of college baseball. I like following my alma mater, staying up to date on players from where I grew up, and tracking the up and coming stars in the game who will undoubtedly play professionally one day. Although the NCAA does a great job of gathering this data - there isn't a great central repository for visualizing college baseball stats that is easily searchable and filterable. I felt that I could take steps towards creating a solution to this problem through this project - and maybe uncover some interesting insights while I'm at it. And last, but certainly not least, learn about Data Engineering!
 
 If you want to go straight to reproducing the project on your own you can find instructions [here](https://github.com/beaubranton4/ncaa_d1_baseball_stats/blob/main/setup.md).
@@ -36,6 +40,9 @@ You can view full project criteria [here](https://github.com/DataTalksClub/data-
 
 Here is how all the technologies come together in an architecture diagram:
 
+
+![Page 1](images/tech_architecture_diagram.png)
+
   ## **Dataset**
 
 For this project I decided to write a webscraping script that pulls data from the [official stats website of the NCAA](https://stats.ncaa.org/). I chose this as my dataset because:
@@ -44,6 +51,9 @@ For this project I decided to write a webscraping script that pulls data from th
 2. These statistics aren't readily available via API or free download anywhere
 3. I thought it would be fun to learn web scraping
 
+Here is what the raw data looks like on the website that we will be scraping:
+
+![Page 2](images/dataset_example.png)
 
 ## **Terraform - Infrastructure as Code (IAC)**
 
@@ -65,7 +75,7 @@ Docker is used in this project to run an instance of Mage on your machine with t
 
 ## **Mage - Data Orchestration**
 
-The [mage](https://github.com/beaubranton4/ncaa_d1_baseball_stats/tree/main/mage) folder in this contain all the python and sql code that make up this data pipeline.
+The [mage](https://github.com/beaubranton4/ncaa_d1_baseball_stats/tree/main/mage) folder in this project contains all the python and sql code that power this data pipeline.
 
 There are 3 pipelines that come together to create the overall data pipeline. Each pipeline is built from different blocks (pieces of code) that can be grouped into: data loaders, transformers, data exporters, and custom. The scripts in the mage folder are organized into these groups.
 
@@ -87,9 +97,17 @@ This "pipeline" which essentially replicates a dbt cloud run when triggered, cre
 
 The final dashboard is created in Google Data Studio and can be found [here](https://lookerstudio.google.com/s/nWiTVPz6SUw).
 
+![Page 3](images/dashboard_image_1.png)
+![Page 4](images/dashboard_image_2.png)
+![Page 5](images/dashboard_image_3.png)
+![Page 6](images/dashboard_image_4.png)
+
+## **Reproducing this Project**
+
+[Instructions to reproduce project here](https://github.com/beaubranton4/ncaa_d1_baseball_stats/blob/main/setup.md)
+
 ## **Future Enhancements**
 
-  
 
 - Provide detailed documentation of all tables with fields, types and descriptions of each.
 - There is an issue with some of the raw data. I found a few players who's names are listed differently across different games. Since i don't have an ID to join on, this looks like two different players in my dataset when it is really a single player. I would like to fix this.
