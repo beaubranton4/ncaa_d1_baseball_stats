@@ -115,3 +115,6 @@ The final dashboard is created in Google Data Studio and can be found [here](htt
 - In mage, I have built 3 pipelines in a way that the completion of 1 will trigger the other two sequentially. The issue is that my 1st pipeline uses dynamic blocks. So if 10 dynamic blocks are created my pipeline will trigger the downstream pipelines 10 times which is extremely redundant
 - There was an issue with one variable that I had to hard code throughout my project for the dev dataset in BigQuery. Couldn't figure that one out and hope to fix one day.
 - I use dbt daily at my job, and know that tests are pivotal to building a scalable data solution. To save time, i did not implement any tests in dbt or mage, but would like to if time permitting.
+
+
+If you liked this project or just want to say hi, feel free to connect with me on [Linkedin]https://www.linkedin.com/in/beaubranton/)
