@@ -128,10 +128,9 @@ Ensure Make is installed on your machine. Use the provided Makefile to setup the
 
   
 
-  
+In the parent directory of this project:
 
 ```bash
-cd  ~/ncaa_d1_baseball_stats
 set  -o  allexport && source  .env && set  +o  allexport
 make  gcp-set-all  # This will create the service account, configure IAM roles, download service account credentials to the credential folder
 ```
@@ -242,10 +241,9 @@ cd  ncaa_d1_baseball_stats
 
 Docker and docker-compose should already be installed on the VM via Terraform.
 
-  
+While still in the parent directory of this project on your VM:
 
 ```bash
-cd  ~/ncaa_d1_baseball_stats
 sudo  docker-compose  up
 ```
 
