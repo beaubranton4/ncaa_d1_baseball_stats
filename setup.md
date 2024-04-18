@@ -5,14 +5,14 @@
 
 # NCAA Division 1 Baseball Stats Pipeline Setup
 
-## Video With Project Setup Instructions
-
-Link to video walkthrough of project setup [here](https://youtu.be/_jiDGqHllJU)
-
 ## Overview
 
   
 This guide provides detailed instructions to replicate this project: an end-to-end data engineering pipeline that scrapes College Baseball Stats from the web, stores it in a Data Lake (Google Cloud Storage), pushesit to a Data Warehouse (BigQuery), transforms it using dbt, and builds a dashboard to visualize the data (Google Data Studio). The pipeline involves setting up resources on Google Cloud Platform using Terraform, configuring service accounts, and automating data flows through a dockerized instance of Mage.
+
+## Video With Project Setup Instructions
+
+Link to video walkthrough of project setup [here](https://youtu.be/_jiDGqHllJU)
 
 
 ## Prerequisites
