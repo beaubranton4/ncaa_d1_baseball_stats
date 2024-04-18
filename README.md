@@ -3,7 +3,7 @@
 
 ## **Overview**
 
-An end to end data pipeline that scrapes, stores, transforms and visualizes stats from all NCAA D1 Baseball Games. This project was created to demonstrate concepts learned in the 2024 Data Engineering Zoomcamp hosted by the Data Talks Club as well as a fun personal project for me to build a database and frontend that I wish had previously existed. Big thank you to the Data Talks Club for dedicating their time to putting this course together and helping people learn Data Engineering for free. 
+An end to end data pipeline that scrapes, stores, transforms and visualizes stats from all 2024 NCAA D1 Baseball Games. This project was created to demonstrate concepts learned in the 2024 Data Engineering Zoomcamp hosted by the Data Talks Club as well as a fun personal project for me to build a database and tool that I wish had previously existed. Big thank you to the Data Talks Club for dedicating their time to putting this course together and helping people learn Data Engineering for free. 
 
 If you want to go straight to reproducing this project, you can find detailed setup instructions [here](https://github.com/beaubranton4/ncaa_d1_baseball_stats/blob/main/setup.md).
 
