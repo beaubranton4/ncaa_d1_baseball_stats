@@ -5,7 +5,10 @@
 
 # NCAA Division 1 Baseball Stats Pipeline Setup
 
-  
+## Video With Project Setup Instructions
+
+Link to video walkthrough of project setup [here](https://youtu.be/_jiDGqHllJU)
+
 ## Overview
 
   
