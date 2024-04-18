@@ -58,10 +58,10 @@ Navigate to your desired directory and clone the repository:
 ```bash
 git  clone  https://github.com/beaubranton4/ncaa_d1_baseball_stats.git
 cd  ncaa_d1_baseball_stats
-mv  env_template  .env  # Rename env_template to .env
+
 ```
 
-  
+  Rename the env_template to .env
 
   
 
@@ -116,9 +116,11 @@ In your `.env`:
 
   
 
-  
+### 2.3 Enable Billing for the Project You Created
 
-### 2.3 Create Service Account & Setup Access
+Go to [Google Cloud Console](https://console.cloud.google.com/) and select the project you created. Next go to [Billing](https://console.cloud.google.com/billing) and enable billing.
+
+### 2.4 Create Service Account & Setup Access
 
   
 
@@ -139,7 +141,7 @@ make  gcp-set-all  # This will create the service account, configure IAM roles, 
 
   
 
-### 2.4 Generate SSH Keys
+### 2.5 Generate SSH Keys
 
   
 
@@ -233,7 +235,7 @@ cd  ncaa_d1_baseball_stats
 - Copy the .env file over from the project in your local machine to the project in the VM
 - Copy the gcp-credentials.json in the credentials folder from the project in your local machine to the same location in the project on your VM
 
-  
+  NOTE: If you decide to skip this step, you must download docker and docker-compose on your machine manually to run the data pipelines in Mage locally
 
 ## 6. Running Mage via Docker-Compose
 

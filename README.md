@@ -83,9 +83,13 @@ Pipeline 1: scrape_ncaa_d1_baseball_stats
 
 This pipeline scrapes the data from the NCAA stats website, applies basic transformations and stores the data as parquet files in a partitioned fashion.
 
+![Page 3](images/mage_scrape_stats_to_gcs_pipeline.png)
+
 Pipeline 2: ncaa_batting_gcs_to_big_query
 
 This pipeline further transforms, cleans and filters the data and combines it into a single dataset that is stored in our datawarehouse, BigQuery
+
+![Page 4](images/mage_gcs_to_bq_pipeline.png)
 
 Pipeline 3: dbt_transform_ncaa_d1_baseball_stats
 
@@ -93,14 +97,16 @@ The final pipeline is created from a dbt (data build tool) project using Mage's 
 
 This "pipeline" which essentially replicates a dbt cloud run when triggered, creates 5 production models from the single staged dataset.
 
+![Page 5](images/dbt_lineage_graph.png)
+
 ## **Google Data Studio (Looker) - Dashboard**
 
 The final dashboard is created in Google Data Studio and can be found [here](https://lookerstudio.google.com/s/nWiTVPz6SUw).
 
-![Page 3](images/dashboard_image_1.png)
-![Page 4](images/dashboard_image_2.png)
-![Page 5](images/dashboard_image_3.png)
-![Page 6](images/dashboard_image_4.png)
+![Page 6](images/dashboard_image_1.png)
+![Page 7](images/dashboard_image_2.png)
+![Page 8](images/dashboard_image_3.png)
+![Page 9](images/dashboard_image_4.png)
 
 ## **Reproducing this Project**
 
@@ -117,4 +123,4 @@ The final dashboard is created in Google Data Studio and can be found [here](htt
 - I use dbt daily at my job, and know that tests are pivotal to building a scalable data solution. To save time, i did not implement any tests in dbt or mage, but would like to if time permitting.
 
 
-If you liked this project or just want to say hi, feel free to connect with me on [Linkedin]https://www.linkedin.com/in/beaubranton/)
+If you liked this project or just want to say hi, feel free to connect with me on [Linkedin](https://www.linkedin.com/in/beaubranton/)
