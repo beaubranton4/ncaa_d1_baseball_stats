@@ -123,4 +123,4 @@ The final dashboard is created in Google Data Studio and can be found [here](htt
 - I use dbt daily at my job, and know that tests are pivotal to building a scalable data solution. To save time, i did not implement any tests in dbt or mage, but would like to if time permitting.
 
 
-If you liked this project or just want to say hi, feel free to connect with me on [Linkedin]https://www.linkedin.com/in/beaubranton/)
+If you liked this project or just want to say hi, feel free to connect with me on [Linkedin](https://www.linkedin.com/in/beaubranton/)
