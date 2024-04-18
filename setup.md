@@ -8,7 +8,7 @@
 ## Overview
 
   
-This guide provides detailed instructions to replicate this project: an end-to-end data engineering pipeline that scrapes College Baseball Stats from the web, stores it in a Data Lake (Google Cloud Storage), pushesit to a Data Warehouse (BigQuery), transforms it using dbt, and builds a dashboard to visualize the data (Google Data Studio). The pipeline involves setting up resources on Google Cloud Platform using Terraform, configuring service accounts, and automating data flows through a dockerized instance of Mage.
+This guide provides detailed instructions to replicate this project: an end-to-end data engineering pipeline that scrapes College Baseball Stats from the web, stores it in a Data Lake (Google Cloud Storage), pushes it to a Data Warehouse (BigQuery), transforms it using dbt, and builds a dashboard to visualize the data (Google Data Studio). The pipeline involves setting up resources on Google Cloud Platform using Terraform, and automating data flows through a dockerized instance of Mage containing python and sql code (dbt).
 
 ## Video With Project Setup Instructions
 
