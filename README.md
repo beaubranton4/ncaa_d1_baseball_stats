@@ -3,27 +3,25 @@
 
 ## **Overview**
 
-An end to end data pipeline that scrapes, stores, transforms and visualizes stats from all NCAA D1 Baseball Games. This project was created to demonstrate concepts learned in the 2024 Data Engineering Zoomcamp hosted by the Data Talks Club as well as a fun personal project for me to build a database and frontend that I wish had previously existed.
+An end to end data pipeline that scrapes, stores, transforms and visualizes stats from all NCAA D1 Baseball Games. This project was created to demonstrate concepts learned in the 2024 Data Engineering Zoomcamp hosted by the Data Talks Club as well as a fun personal project for me to build a database and frontend that I wish had previously existed. Big thank you to the Data Talks Club for dedicating their time to putting this course together and helping people learn Data Engineering for free. 
 
-Big thank you to the Data Talks Club for dedicating their time to putting this course together and helping people learn Data Engineering for free.
+If you want to go straight to reproducing this project, you can find detailed setup instructions [here](https://github.com/beaubranton4/ncaa_d1_baseball_stats/blob/main/setup.md).
 
 ## **Problem Statement**
   
- As a former college baseball player, I am an avid fan of college baseball. I like following my alma mater, staying up to date on players from where I grew up, and tracking the up and coming stars in the game who will undoubtedly play professionally one day. Although the NCAA does a great job of gathering this data - there isn't a great central repository for visualizing college baseball stats that is easily searchable and filterable. I felt that I could take steps towards creating a solution to this problem through this project - and maybe uncover some interesting insights while I'm at it. And last, but certainly not least, learn about Data Engineering!
-
-If you want to go straight to reproducing the project on your own you can find instructions [here](https://github.com/beaubranton4/ncaa_d1_baseball_stats/blob/main/setup.md).
+ As a former college baseball player, I am a big fan of college baseball. I enjoy following the baseball team of my alma mater, staying up to date on players from where I grew up, and tracking the up and coming stars in the game who will undoubtedly play professionally one day. Although the NCAA does a great job of gathering stats from each game - there isn't a great central repository for visualizing college baseball stats that is easily searchable and filterable. I felt that I could take steps towards creating a solution to this problem through this project - and maybe uncover some interesting insights while I'm at it. And last, but certainly not least, learn about Data Engineering.
 
   ## **Objective**
 
 Use [concepts learned in the course](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/README.md) to build an end-to-end data pipeline that will result in a dashboard to visualize stats and uncover insights from the NCAA D1 Baseball season. The project will include the following:
 
 -   Selecting a dataset of interest (I chose to gather my data via webscraping)
--   Creating a pipeline for processing this dataset and putting it to a datalake
+-   Creating a pipeline for processing this dataset and transferring it to a datalake
 -   Creating a pipeline for moving the data from the lake to a data warehouse
 -   Transforming the data in the data warehouse: prepare it for the dashboard
 -   Building a dashboard to visualize the data
 
-You can view full project criteria [here](https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/projects).
+You can view the full project criteria [here](https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/projects).
   
   ## **Technologies Used**
   
@@ -51,7 +49,7 @@ For this project I decided to write a webscraping script that pulls data from th
 2. These statistics aren't readily available via API or free download anywhere
 3. I thought it would be fun to learn web scraping
 
-Here is what the raw data looks like on the website that we will be scraping:
+Here is what the raw data looks like on the website that we will be scraping from a single game:
 
 ![Page 2](images/dataset_example.png)
 
@@ -77,7 +75,7 @@ Docker is used in this project to run an instance of Mage on your machine with t
 
 The [mage](https://github.com/beaubranton4/ncaa_d1_baseball_stats/tree/main/mage) folder in this project contains all the python and sql code that power this data pipeline.
 
-There are 3 pipelines that come together to create the overall data pipeline. Each pipeline is built from different blocks (pieces of code) that can be grouped into: data loaders, transformers, data exporters, and custom. The scripts in the mage folder are organized into these groups.
+There are 3 pipelines that come together to create the overall data pipeline. Each pipeline is built from different blocks (pieces of code) that can be grouped into: data loaders, transformers, data exporters, and custom. The scripts in the mage folder are organized into these groups. You can identify the different scripts from each pipeline in the images below.
 
 Pipeline 1: scrape_ncaa_d1_baseball_stats
 
