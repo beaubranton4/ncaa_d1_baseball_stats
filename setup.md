@@ -84,11 +84,11 @@ gcloud  init  --no-browser  --skip-diagnostics
 gcloud  config  get-value  project  # To Verify the correct project is set
 ```
 
-  
+You can also create a Google Cloud project in your web browser instead of through CLI.  
 
   
 
-**WARNING:** Ensure the project ID and Project Name are both ncaa-d1-baseball-stats-project. If you set a different ID/Name, it is ok, but you will need to remember to update the environment variables in your `.env` file accordingly.
+**WARNING:** Ensure you keep track of the project ID and Project Name that you use. If you set a different ID/Name, it is ok, but you will need to remember to update the environment variables in your `.env` file accordingly.
 
   
 
@@ -106,11 +106,9 @@ Ensure the `env_template` is correctly renamed to `.env`.
 
 In your `.env`:
 
-  
+- Update the `GCS_PROJECT_NAME` and `GCS_PROJECT_ID` variables to the name and ID you used to initialize your project in 2.1
 
 - You must update `GCS_BUCKET_NAME` variable because all bucket names across all of GCS are unique. Adding a few numbers to the end should work.
-
-- If you named your GCP project something other than suggested in 2.1 you will need to update the `GCP_PROJECT_ID` and `GCP_PROJECT_NAME` variables.
 
 - You can update the `GCP_REGION` and `GCP_ZONE` variable to somewhere closer to where you live if you'd like.
 
