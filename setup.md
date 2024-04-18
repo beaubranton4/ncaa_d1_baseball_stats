@@ -116,9 +116,11 @@ In your `.env`:
 
   
 
-  
+### 2.3 Enable Billing for the Project You Created
 
-### 2.3 Create Service Account & Setup Access
+Go to [Google Cloud Console](https://console.cloud.google.com/) and select the project you created. Next go to [Billing](https://console.cloud.google.com/billing) and enable billing.
+
+### 2.4 Create Service Account & Setup Access
 
   
 
@@ -140,7 +142,7 @@ make  gcp-set-all  # This will create the service account, configure IAM roles, 
 
   
 
-### 2.4 Generate SSH Keys
+### 2.5 Generate SSH Keys
 
   
 
