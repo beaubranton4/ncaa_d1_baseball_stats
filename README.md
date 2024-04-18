@@ -9,7 +9,7 @@ An end to end data pipeline that scrapes, stores, transforms and visualizes stat
 
 If all you care about is reproducing this project on your own, you can follow this **link**.
 
-If you just want to see the final dashboard you can click [here](https://lookerstudio.google.com/s/nWiTVPz6SUw).
+<iframe width="600" height="450" src="https://lookerstudio.google.com/embed/reporting/a4fcf765-aa8c-4337-bdbe-6a165cbb5266/page/p_z3bay2lggd" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
 
   ## **Objective**
 
@@ -91,10 +91,7 @@ This "pipeline" which essentially replicates a dbt cloud run when triggered, cre
 
 The final dashboard is created in Google Data Studio and can be found [here](https://lookerstudio.google.com/s/nWiTVPz6SUw).
 
-[INSERT IMAGE HERE]
-
-
-
+<iframe width="600" height="450" src="https://lookerstudio.google.com/embed/reporting/a4fcf765-aa8c-4337-bdbe-6a165cbb5266/page/p_z3bay2lggd" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
 
 
 ## **Future Enhancements**

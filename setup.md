@@ -1,100 +1,290 @@
+
+  
+
 # NCAA Division 1 Baseball Stats Pipeline Setup
 
+  
+
 ## Overview
-This guide provides detailed instructions to replicate this project: an end-to-end data engineering pipeline to ultimately store D1 Baseball stats from the current season  in BigQuery and build a dashboard to visualize that data. The pipeline involves setting up resources on Google Cloud Platform using Terraform, configuring service accounts, and automating data flows with dbt and Mage.
+
+This guide provides detailed instructions to replicate this project: an end-to-end data engineering pipeline to ultimately store D1 Baseball stats from the current season in BigQuery and build a dashboard to visualize that data. The pipeline involves setting up resources on Google Cloud Platform using Terraform, configuring service accounts, and automating data flows with dbt and Mage.
+
+  
+
+
+Certainly! Here's an updated section for the prerequisites in your README.md, including instructions and links for installing each required tool:
+
 
 ## Prerequisites
-- Git
-- Google Cloud SDK
-- Terraform
-- Make (for automation on local machine)
+
+Before starting, ensure you have the following tools setup/installed on your local machine. 
+
+- **Create a Google Cloud Platform (GCP) Account with Billing Setup**: If you do not already have a Google account, you will need to create one.  Create an account [here](https://cloud.google.com/). Billing setup instructions [here](https://cloud.google.com/billing/docs/how-to/manage-billing-account)
+
+
+- **Git**: [Install Git for Windows](https://git-scm.com/download/win), [Install Git for Mac](https://git-scm.com/download/mac), For Linux: Use your package manager, e.g., for Ubuntu, run `sudo apt install git`
+
+- **Google Cloud SDK**:  [Google SDK Installation](https://cloud.google.com/sdk/docs/downloads-interactive#linux-mac) skip the `gcloud init` step 
+
+- **Terraform**: Links to [Install Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli) 
+
+- **Make**: Usually pre-installed on machine
+
+
+  
 
 ## 1. Download Project Repository
 
+  
+
 Navigate to your desired directory and clone the repository:
 
-```bash
-git clone https://github.com/beaubranton4/ncaa_d1_baseball_stats.git
-cd ncaa_d1_baseball_stats
-mv env_template .env  # Rename env_template to .env
-2. Google Cloud Setup
-2.1 Install Google SDK
-Download and install the Google SDK but skip the gcloud init step as described here: Google SDK Installation.
+  
 
-2.2 Initialize Google Cloud Project
-bash
-Copy code
+```bash
+
+git  clone  https://github.com/beaubranton4/ncaa_d1_baseball_stats.git
+
+cd  ncaa_d1_baseball_stats
+
+mv  env_template  .env  # Rename env_template to .env
+
+```
+
+  
+
+## 2. Google Cloud Setup
+
+
+
+### 2.1 Initialize Google Cloud Project
+
+  
+
+```bash
+
 # Initialize your GCP configuration
-gcloud init --no-browser --skip-diagnostics
+
+gcloud  init  --no-browser  --skip-diagnostics
+
 
 # Follow prompts:
-# - Select Option 2 to create a new configuration
-# - Enter configuration name: ncaa-d1-baseball-stats-project
-# - Choose the account and new project ID as prompted
-gcloud config get-value project  # Verify the correct project is set
-WARNING: Ensure the project ID matches exactly with the provided environment variables or update the .env and variables.tf files accordingly.
+	# - Select Option 2 - to create a new configuration
+	# - Enter configuration name: ncaa-d1-baseball-stats-project
+	# - Choose the account you would like to use to perform operations for this configuration: (select your active email tied to GCP account)
+	# - Pick Cloud Project to Use: (Create New Project)
+	# - Please enter project id: ncaa-d1-baseball-stats-project
 
-2.3 Update Environment Variables
-Ensure the .env file is correctly renamed and update it with the unique GCS_BUCKET_NAME and any other regional settings.
+gcloud  config  get-value  project  # To Verify the correct project is set
 
-2.4 Create Service Account & Setup Access
+```
+
+  
+
+**WARNING:** Ensure the project ID and Project Name are both ncaa-d1-baseball-stats-project. If you set a different ID/Name, it is ok, but you will need to remember to update the environment variables in your `.env` file accordingly.
+
+  
+
+### 2.2 Update Environment Variables
+
+  
+
+Ensure the `env_template` is correctly renamed to `.env`. 
+
+In your `.env`:
+
+ - You must update `GCS_BUCKET_NAME` variable because all bucket names across all of GCS are unique. Adding a few numbers to the end should work.
+ - If you named your GCP project something other than suggested in 2.1 you will need to update the `GCP_PROJECT_ID` and `GCP_PROJECT_NAME` variables.
+ - You can update the `GCP_REGION` and `GCP_ZONE` variable to somewhere closer to where you live if you'd like.
+
+  
+
+### 2.3 Create Service Account & Setup Access
+
+  
+
 Ensure Make is installed on your machine. Use the provided Makefile to setup the project:
 
-bash
-Copy code
-cd ~/ncaa_d1_baseball_stats
-set -o allexport && source .env && set +o allexport
-make gcp-set-all  # This will create the service account and configure IAM roles
-2.5 Generate SSH Keys
-bash
-Copy code
-ssh-keygen -t rsa -b 2048 -f ~/.ssh/ncaa_d1_baseball_stats -C project_user
-# Optionally configure SSH to connect to VMs easily
-3. Terraform Setup
+  
+
+```bash
+
+cd  ~/ncaa_d1_baseball_stats
+
+set  -o  allexport && source  .env && set  +o  allexport
+
+make  gcp-set-all  # This will create the service account, configure IAM roles, download service account credentials to the credential folder
+
+```
+
+  
+
+### 2.4 Generate SSH Keys
+
+  
+
+```bash
+
+cd ~/.ssh
+ssh-keygen  -t  rsa  -b  2048  -f  ~/.ssh/ncaa_d1_baseball_stats  -C  project_user
+
+```
+Optionally configure SSH in a config file to connect to VMs easily:
+```
+Host ncaa-d1-baseball-stats
+
+Hostname [to be replaced with external IP Address of VM]
+
+User project_user
+
+IdentityFile ~/.ssh/ncaa_d1_baseball_stats
+```
+  
+
+## 3. Terraform Setup
+
+  
+
 Navigate to the project's Terraform directory and initialize and apply the configuration:
 
-bash
-Copy code
-set -o allexport && source .env && set +o allexport
-terraform -chdir=terraform init
-terraform -chdir=terraform plan
-terraform -chdir=terraform apply
-Confirm the setup by typing yes when prompted.
+  
 
-4. VM Setup
-bash
-Copy code
+```bash
+
+set  -o  allexport && source  .env && set  +o  allexport
+
+terraform  -chdir=terraform  init
+
+terraform  -chdir=terraform  plan
+
+terraform  -chdir=terraform  apply
+
+```
+
+  
+
+Confirm the setup by typing `yes` when prompted. 
+
+Magic! Your Data Lake, Data Warehouse and VM have been created.
+
+  
+
+## 4. SSH into VM
+
+  
+
+```bash
+
 # Start the VM
-gcloud compute instances start $GCP_VM_NAME --zone $GCP_ZONE --project $GCP_PROJECT_ID
 
-# Connect to the VM
-ssh -i ~/.ssh/ncaa_d1_baseball_stats $GCP_VM_SSH_USER@[VM_EXTERNAL_IP]
-5. Setup on VM
+gcloud  compute  instances  start  $GCP_VM_NAME  --zone  $GCP_ZONE  --project  $GCP_PROJECT_ID
+
+#This should also print out the External IP Address of your VM that you will need to include in the following command:
+
+ssh  -i  ~/.ssh/ncaa_d1_baseball_stats  $GCP_VM_SSH_USER@[Replace with VM_EXTERNAL_IP] # Connect to the VM
+
+```
+
+  
+
+## 5. Setup on VM
+
+  
+
 Clone the project and prepare the environment on the VM:
 
-bash
-Copy code
-git clone https://github.com/beaubranton4/ncaa_d1_baseball_stats.git
-cd ncaa_d1_baseball_stats
-# Ensure environment variables and credentials are copied over
-6. Running Mage via Docker
-bash
-Copy code
-cd ~/ncaa_d1_baseball_stats
-sudo docker-compose up
-7. Triggering Mage Pipelines
-Access the Mage UI to run the pipelines. Choose between quick tests or full season data scraping.
+  
 
-8. Looker Dashboard Setup
-Set up Looker for data visualization by connecting it to BigQuery. Follow the steps provided here to configure OAuth 2.0 credentials.
+```bash
 
-9. Destroy Resources
+git  clone  https://github.com/beaubranton4/ncaa_d1_baseball_stats.git
+
+cd  ncaa_d1_baseball_stats
+
+```
+
+  
+
+ - Copy the .env file over from the project in your local machine to the project in the VM
+ - Copy the gcp-credentials.json in the credentials folder from the project in your local machine to the same location in the project on your VM
+
+## 6. Running Mage via Docker-Compose
+
+  Docker and docker-compose should already be installed on the VM via Terraform.
+
+```bash
+
+cd  ~/ncaa_d1_baseball_stats
+
+sudo  docker-compose  up
+
+```
+
+  Enable Port Forwarding and connect to localhost:6789 in a web browser. You should see the UI for Mage.
+
+## 7. Triggering Mage Pipelines via Mage UI
+
+  
+
+Access the Mage UI to run the pipelines. 
+
+
+1. Navigate to **Pipelines** in the left-hand menu where you'll find four pipelines:
+   - `test_scrape_ncaa_d1_baseball_stats`
+   - `scrape_ncaa_d1_baseball_stats`
+   - `ncaa_batting_gcs_to_big_query`
+   - `dbt_transform_ncaa_d1_baseball`
+
+2. Choose a pipeline based on your time preference:
+   - **Option 1: Quick Test: Scrape stats from first day of season** (Approx. 5 minutes)
+     - Select `test_scrape_ncaa_d1_baseball_stats`.
+     - Click **Run@once** then **Run Now**.
+   - **Option 2: Full Season: Scrape all stats from season** (Approx. 2-3 hours)
+     - Select `scrape_ncaa_d1_baseball_stats`.
+     - Click **Run@once** then **Run Now**.
+
+Both options will scrape NCAA stats and transfer the data to Google Cloud Storage. Upon completion of either pipeline, the subsequent pipelines (`ncaa_batting_gcs_to_big_query` and `dbt_transform_ncaa_d1_baseball`) will automatically run, loading and transforming the data: which will also transfer the data to BigQuery and transform it using dbt. You can confirm by checking the following:
+
+- **Google Cloud Storage**: You’ll find a bucket named as per your `.env` file, containing folders for each date's data in parquet format.
+- **BigQuery**: 6 new tables will be created in the production dataset within you BQ project
+
+### Automating Pipeline Execution
+
+To keep the pipeline running regularly, set up a scheduled Mage trigger for `scrape_ncaa_d1_baseball_stats`. This automation ensures your data remains up-to-date, running the pipeline as often as needed while keeping in mind the associated costs.
+
+
+
+  
+
+## 8. Looker Dashboard Setup
+
+You can create your own dashboard and connect it to your production data now available in BigQuery. This part of the project cannot be setup for you via code. Here is the [link](https://lookerstudio.google.com/s/nWiTVPz6SUw) to the dashboard for you to view as well as an embedded view:
+
+<iframe width="600" height="450" src="https://lookerstudio.google.com/embed/reporting/a4fcf765-aa8c-4337-bdbe-6a165cbb5266/page/p_z3bay2lggd" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+
+
+
+Along with resources for you to learn more if interested in building your own dashboard.
+
+- [Looker Instance Setup](https://console.cloud.google.com/looker/instances?referrer=search&authuser=0&walkthrough_id=looker-studio--looker-studio-onboarding&project=ncaa-d1-baseball-stats-project)
+
+- [Embedding Looker Dashboards](https://lookerstudio.google.com/s/nWiTVPz6SUw)
+
+  
+
+## 9. Destroy Resources
+
+  
+
 To clean up resources, navigate to the Terraform directory and run:
 
-bash
-Copy code
-set -o allexport && source .env && set +o allexport
-terraform -chdir=terraform destroy
-Additional Resources
-Looker Instance Setup
-Embedding Looker Dashboards
+  
+
+```bash
+
+set  -o  allexport && source  .env && set  +o  allexport
+
+terraform  -chdir=terraform  destroy
+
+```
+
