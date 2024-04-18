@@ -58,10 +58,10 @@ Navigate to your desired directory and clone the repository:
 ```bash
 git  clone  https://github.com/beaubranton4/ncaa_d1_baseball_stats.git
 cd  ncaa_d1_baseball_stats
-mv  env_template  .env  # Rename env_template to .env
+
 ```
 
-  
+  Rename the env_template to .env
 
   
 
