@@ -7,9 +7,7 @@ An end to end data pipeline that scrapes, stores, transforms and visualizes stat
 
  As a former college baseball player, I am an avid fan of college baseball. I like following my alma mater, staying up to date on players from where I grew up, and tracking the up and coming stars in the game who will undoubtedly play professionally one day. Although the NCAA does a great job of gathering this data - there isn't a great central repository for visualizing college baseball stats that is easily searchable and filterable. I felt that I could take steps towards creating a solution to this problem through this project - and maybe uncover some interesting insights while I'm at it. And last, but certainly not least, learn about Data Engineering!
 
-If all you care about is reproducing this project on your own, you can follow this **link**.
-
-<iframe width="600" height="450" src="https://lookerstudio.google.com/embed/reporting/a4fcf765-aa8c-4337-bdbe-6a165cbb5266/page/p_z3bay2lggd" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+If you want to go straight to reproducing the project on your own you can find instructions [here](https://github.com/beaubranton4/ncaa_d1_baseball_stats/blob/main/setup.md).
 
   ## **Objective**
 
@@ -37,8 +35,6 @@ You can view full project criteria [here](https://github.com/DataTalksClub/data-
  - Google Data Studio - Looker (to visualize our data)
 
 Here is how all the technologies come together in an architecture diagram:
-
-
 
   ## **Dataset**
 
@@ -90,9 +86,6 @@ This "pipeline" which essentially replicates a dbt cloud run when triggered, cre
 ## **Google Data Studio (Looker) - Dashboard**
 
 The final dashboard is created in Google Data Studio and can be found [here](https://lookerstudio.google.com/s/nWiTVPz6SUw).
-
-<iframe width="600" height="450" src="https://lookerstudio.google.com/embed/reporting/a4fcf765-aa8c-4337-bdbe-6a165cbb5266/page/p_z3bay2lggd" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
-
 
 ## **Future Enhancements**
 
