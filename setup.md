@@ -236,7 +236,7 @@ cd  ncaa_d1_baseball_stats
 - Copy the .env file over from the project in your local machine to the project in the VM
 - Copy the gcp-credentials.json in the credentials folder from the project in your local machine to the same location in the project on your VM
 
-  
+  NOTE: If you decide to skip this step, you must download docker and docker-compose on your machine manually to run the data pipelines in Mage locally
 
 ## 6. Running Mage via Docker-Compose
 
