@@ -73,9 +73,9 @@ Docker is used in this project to run an instance of Mage on your machine with t
 
 ## **Mage - Data Orchestration**
 
-The [mage](https://github.com/beaubranton4/ncaa_d1_baseball_stats/tree/main/mage) folder in this project contains all the python and sql code that power this data pipeline.
+The [mage](https://github.com/beaubranton4/ncaa_d1_baseball_stats/tree/main/mage) folder in this project contains all the python and sql code that power this project (other than the dbt transformations, which are still orchestrated by Mage).
 
-There are 3 pipelines that come together to create the overall data pipeline. Each pipeline is built from different blocks (pieces of code) that can be grouped into: data loaders, transformers, data exporters, and custom. The scripts in the mage folder are organized into these groups. You can identify the different scripts from each pipeline in the images below.
+There are 3 pipelines that come together to create a larger unified data pipeline. Each pipeline is built from different blocks (pieces of code) that can be grouped into: data loaders, transformers, data exporters, and custom. The scripts in the mage folder are organized into these groups. You can identify the different scripts from each pipeline in the images below.
 
 Pipeline 1: scrape_ncaa_d1_baseball_stats
 
