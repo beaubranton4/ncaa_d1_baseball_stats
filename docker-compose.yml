@@ -29,6 +29,7 @@ services:
       - 6789:6789
     volumes:
       - .:/home/src/
+      - ./dbt:/home/src/${PROJECT_NAME}/dbt/ncaa_d1_baseball_stats/
     restart: on-failure:5
   postgres:
     image: postgres:14
