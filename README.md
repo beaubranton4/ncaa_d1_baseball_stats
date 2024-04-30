@@ -91,7 +91,7 @@ This pipeline further transforms, cleans and filters the data and combines it in
 
 Pipeline 3: dbt_transform_ncaa_d1_baseball_stats
 
-The final pipeline is created from a dbt (data build tool) project using Mage's inbuilt dbt capabilities. The entire dbt project lives [here]([https://github.com/beaubranton4/ncaa_d1_baseball_stats/tree/main/mage/dbt/ncaa_d1_baseball_stats](https://github.com/beaubranton4/ncaa_d1_baseball_stats/tree/main/dbt) and gets copied to the dbt directory in the docker container when the Mage instance is created. 
+The final pipeline is created from a dbt (data build tool) project using Mage's inbuilt dbt capabilities. The entire dbt project lives [here](https://github.com/beaubranton4/ncaa_d1_baseball_stats/tree/main/dbt) and gets copied to the dbt directory in the docker container when the Mage instance is created. 
 
 This "pipeline" essentially replicates a dbt cloud run when triggered, creating 5 production models from the single staged dataset.
 
